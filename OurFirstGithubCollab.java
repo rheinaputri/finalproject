@@ -7,5 +7,6 @@ public class OurFirstGithubCollab {
         System.out.println("Ketua mulai mengembangkan fitur kedua");
         System.out.println("Tambahan dari Rasyid");
         System.out.println("Tambahan dari Syafa");
+        System.out.println("Tambahan dari Reyna");
     } 
 }
