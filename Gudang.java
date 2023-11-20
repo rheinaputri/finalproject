@@ -8,7 +8,7 @@ public class Gudang {
         int total;
         String login, username, password, lakukan, namabarang, kode, next;
 
-        String[][] barang = new String[6][4];
+        String[][] barang = new String[7][4];
 
         barang[0][0] = "Kode Barang";
         barang[0][1] = "Nama Barang";
