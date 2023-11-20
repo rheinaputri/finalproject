@@ -8,7 +8,7 @@ public class Gudang {
         int total;
         String login, username, password, lakukan, namabarang, kode, next;
 
-        String[][] barang = new String[6][4];
+        String[][] barang = new String[7][4];
 
         barang[0][0] = "Kode Barang";
         barang[0][1] = "Nama Barang";
@@ -72,8 +72,11 @@ public class Gudang {
             System.out.print("Lakukan : ");
             lakukan = sc.nextLine();
 
+//barang masuk
             if (lakukan.equalsIgnoreCase("Input Barang Masuk")) {
-                //Mengisi nilai array
+                //Mengisi nilai array data barang keluar
+                System.out.print("Tanggal : ");
+                String tanggal = sc.nextLine();
                 System.out.print("Kode Barang : ");
                 String kodeBaru = sc.nextLine();
                 barang[5][0] = kodeBaru;
@@ -85,8 +88,35 @@ public class Gudang {
                 barang[5][2] = quantityBaru;
                 System.out.print("Lokasi : ");
                 String lokasiBaru = sc.nextLine();
-                barang[5][3] = lokasiBaru;
 
+//barang keluar
+            } else if (lakukan.equalsIgnoreCase("input barang keluar")) {
+                System.out.print("Tanggal : ");
+                String tanggalKeluar = sc.nextLine();
+                System.out.print("Kode Barang : ");
+                String kodeBarangKeluar = sc.nextLine();
+                System.out.print("Nama Barang  : ");
+                String namaBarangKeluar = sc.nextLine();
+                System.out.print("Quantity : ");
+                String quantityKeluar = sc.nextLine();
+                System.out.print("Lokasi di ");
+                String lokasiKeluar = "";  // Menyesuaikan nilai pada array data barang
+                for (int i = 1; i < barang.length; i++) {
+                    if (barang[i][0].equals(kodeBarangKeluar)) {
+                        lokasiKeluar = barang[i][3];
+                        break;
+                    }
+                }
+
+                // Menampilkan data barang keluar
+                System.out.println("Tanggal : " + tanggalKeluar);
+                System.out.println("Kode Barang : " + kodeBarangKeluar);
+                System.out.println("Nama Barang : " + namaBarangKeluar);
+                System.out.println("Quantity : " + quantityKeluar);
+                System.out.println("Lokasi di " + lokasiKeluar);
+
+
+//data barang
             } else if (lakukan.equalsIgnoreCase("data barang")) {
                 //Menampilkan nilai array
                 System.out.printf("%-15s %-15s %-15s %-15s\n", barang[0][0], barang[0][1], barang[0][2], barang[0][3]);
@@ -96,6 +126,8 @@ public class Gudang {
                 }
                 System.out.println("=================================================");
                 }
+                
+            
 
             System.out.print("Lanjut ke menu lain? (y/n): ");
             next = sc.next();
@@ -105,6 +137,8 @@ public class Gudang {
             }
             sc.nextLine();
             System.out.println();
+
+    
         }
     }
 }
