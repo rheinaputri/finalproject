@@ -8,21 +8,22 @@ public class Gudang {
         String login, username, password, namabarang, kode, next;
 
         String[][] barang = new String[7][4];
+        int[][] jumlah = new int[7][1];
 
         barang[0][0] = "Kode Barang";
         barang[0][1] = "Nama Barang";
-        barang[0][2] = "Quantity";
-        barang[0][3] = "Lokasi";
+        barang[0][2] = "Lokasi";
+        barang[0][3] = "jumlah";
 
         barang[1][0] = "645748";
         barang[1][1] = "Beras";
-        barang[1][2] = "50";
-        barang[1][3] = "Rak 1";
+        barang[1][2] = "Rak 1";
+        jumlah[1][0] = 50;
 
         barang[2][0] = "694736";
         barang[2][1] = "Mie Instan";
-        barang[2][2] = "65";
-        barang[2][3] = "Rak 2";
+        barang[2][2] = "Rak 2";
+        jumlah[2][0] = 65;
 
         barang[3][0] = "698364";
         barang[3][1] = "Snack";
@@ -69,7 +70,7 @@ public class Gudang {
                 System.out.printf("%-15s %-15s %-15s %-15s\n", barang[0][0], barang[0][1], barang[0][2], barang[0][3]);
 
                 for (int i = 1; i < barang.length; i++) {
-                    System.out.printf("%-15s %-15s %-15s %-15s\n", barang[i][0], barang[i][1], barang[i][2], barang[i][3]);
+                    System.out.printf("%-15s %-15s %-15s %s\n", barang[i][0], barang[i][1], barang[i][2], jumlah[i][0]);
                 }
                 System.out.println("=================================================");
 
