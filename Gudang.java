@@ -27,13 +27,13 @@ public class Gudang {
 
         barang[3][0] = "698364";
         barang[3][1] = "Snack";
-        barang[3][2] = "25";
-        barang[3][3] = "Rak 3";
+        barang[3][2] = "Rak 3";
+        jumlah[3][0] = 25;
 
         barang[4][0] = "678342";
         barang[4][1] = "Roti";
-        barang[4][2] = "100";
-        barang[4][3] = "Rak 4";
+        barang[4][2] = "Rak 4";
+        jumlah[4][0] = 100;
 
         System.out.println("====== Login ======");
         System.out.print("Username : ");
@@ -83,19 +83,20 @@ public class Gudang {
                     barang[4+i][0] = kodeBaru;
                     System.out.print("Nama Barang : ");
                     String namaBaru = sc.next();
+                    sc.nextLine();
                     barang[4+i][1] = namaBaru;
-                    System.out.print("Quantity : ");
-                    String quantityBaru = sc.next();
-                    barang[4+i][2] = quantityBaru;
                     System.out.print("Lokasi : ");
-                    String lokasiBaru = sc.next();
-                    barang[4+i][3] = lokasiBaru;
+                    String lokasiBaru = sc.nextLine();
+                    barang[4+i][2] = lokasiBaru;
+                    System.out.print("Jumlah : ");
+                    int jumlahBaru = sc.nextInt();
+                    jumlah[4+i][0] = jumlahBaru;
                     sc.nextLine();
 
                     i++;
 
                     System.out.print("Input barang masuk lagi?? (y/n): ");
-                    next = sc.next();
+                    next = sc.nextLine();
 
                     if (next.equalsIgnoreCase("n")) {
                         break;
