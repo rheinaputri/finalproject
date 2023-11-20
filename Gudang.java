@@ -103,12 +103,11 @@ public class Gudang {
             }
 
             System.out.print("Lanjut ke menu lain? (y/n): ");
-            next = sc.nextLine();
+            next = sc.next();
 
             if (next.equalsIgnoreCase("n")) {
                 break;
             }
-            sc.nextLine();
             System.out.println();
         }
     }
