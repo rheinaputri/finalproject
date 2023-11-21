@@ -108,11 +108,11 @@ public class Gudang {
                 } else if (opsi == 2) {
                     int i = 1;
                     while (true) {
-                        System.out.print("Tanggal : ");
+                        System.out.print("Tanggal \t: ");
                         String tanggalMasuk = sc.next();
-                        System.out.print("Kode Barang : ");
+                        System.out.print("Kode Barang \t: ");
                         String kodeBarangMasuk = sc.next();
-                        System.out.print("Nama Barang : ");
+                        System.out.print("Nama Barang \t: ");
                         sc.nextLine();
                         String namaBarangMasuk = sc.nextLine();
                         String lokasiMasuk = "";  // Menyesuaikan nilai pada array data barang
@@ -125,7 +125,7 @@ public class Gudang {
                             }
                         }
                         if (indexBarangMasuk != -1) {
-                            System.out.print("Jumlah Masuk : ");
+                            System.out.print("Jumlah Masuk \t: ");
                             int jumlahMasuk = sc.nextInt();
                             jumlah[indexBarangMasuk][0] += jumlahMasuk;
                             sc.nextLine();
@@ -206,6 +206,7 @@ public class Gudang {
                     System.out.printf("%-15s %-15s %-15s %-15s\n", barang[kodeUpdate][0], barang[kodeUpdate][1], barang[kodeUpdate][2], jumlah[kodeUpdate][0]);
                     
                     //Masukkan data baru
+                    System.out.println("Nama atau lokasi baru");
                     System.out.print("\nNama Barang : ");
                     sc.nextLine();
                     namabarang = sc.nextLine();
