@@ -95,7 +95,7 @@ public class Gudang {
 
                     i++;
 
-                    System.out.print("Input barang masuk lagi?? (y/n): ");
+                    System.out.print("Input barang masuk lagi? (y/n): ");
                     next = sc.nextLine();
 
                     if (next.equalsIgnoreCase("n")) {
