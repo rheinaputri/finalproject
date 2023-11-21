@@ -64,7 +64,7 @@ public class Gudang {
             }
             System.out.print("Lakukan : ");
             lakukan = sc.nextInt();
-
+//barangmasuk
             if (lakukan == 1) {
                 //Menampilkan nilai array
                 System.out.printf("%-15s %-15s %-15s %-15s\n", barang[0][0], barang[0][1], barang[0][2], barang[0][3]);
@@ -78,8 +78,6 @@ public class Gudang {
                 //Mengisi nilai array
                 int i = 1;
                 while (true) {
-                    System.out.print("Tanggal : ");
-                    String tanggalMasuk = sc.next();
                     System.out.print("Kode Barang : ");
                     String kodeBaru = sc.next();
                     barang[4+i][0] = kodeBaru;
@@ -97,14 +95,15 @@ public class Gudang {
 
                     i++;
 
-                    System.out.print("Input barang masuk lagi? (y/n): ");
+                    System.out.print("Input barang masuk lagi?? (y/n): ");
                     next = sc.nextLine();
 
                     if (next.equalsIgnoreCase("n")) {
                         break;
                     }
                 }
-    // barangkeluar
+            
+ // barangkeluar
             } else if (lakukan == 3) {
                 int i = 1;
                 while (true) {
@@ -153,6 +152,7 @@ public class Gudang {
             next = sc.next();
 
             if (next.equalsIgnoreCase("n")) {
+                System.out.println("***** SUCCESSFULLY *****");
                 break;
             }
             System.out.println();
