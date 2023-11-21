@@ -6,7 +6,7 @@ public class Gudang {
 
         int stok, barangmasuk, barangkeluar;
         int total;
-        String login, username, password, lakukan, namabarang, kode, next;
+        String login, username, password, lakukan, namabarang, kode, quantity, lokasi, next;
 
         String[][] barang = new String[7][4];
 
@@ -138,7 +138,37 @@ public class Gudang {
             sc.nextLine();
             System.out.println();
 
-    
+//Update data barang
+            System.out.print("Masukkan kode barang: ");
+            kode = sc.nextLine();
+            int kodeUpdate = -1;
+            
+            for (int i =1; i <barang.length; i++) {
+                if (barang[i][0].equals(kode)) {
+                    kodeUpdate = i;
+                    break;
+                }
+            }
+            if (kodeUpdate != -1) {
+                System.out.println("\nData barang yang ditemukan: ");
+                System.out.printf("%-15s %-15s %-15s %-15s\n", barang[kodeUpdate][0], barang[kodeUpdate][1], barang[kodeUpdate][2], barang[kodeUpdate][3]);
+
+                System.out.print("\nNama barang: ");
+                namabarang =sc.nextLine();
+                System.out.print("Quantity: ");
+                quantity = sc.nextLine();
+                System.out.print("Lokasi baru: ");
+                lokasi = sc.nextLine();
+
+                barang[kodeUpdate][1] = namabarang;
+                barang[kodeUpdate][2] = quantity;
+                barang[kodeUpdate][3] = lokasi;
+
+                System.out.println("\nData barang berhasil diperbarui!");
+                System.out.printf("%-15s %-15s %-15s %-15s\n", barang[kodeUpdate][0], barang[kodeUpdate][1], barang[kodeUpdate][2], barang[kodeUpdate][3]);
+            } else {
+                System.out.println("Barang dengan kode " + kodeUpdate + " tidak ditemukan.");
+            }
         }
     }
 }
