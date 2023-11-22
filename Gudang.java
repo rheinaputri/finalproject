@@ -254,6 +254,13 @@ public class Gudang {
                         System.out.println("Barang dengan kode " + kodeUpdate + " tidak ditemukan");
                     }
             }
+            System.out.println();
+            System.out.print("\nInput update data barang lagi? (y/n): ");
+            next = sc.nextLine();
+
+            if (next.equalsIgnoreCase("n")) {
+                break;
+            }
 
             System.out.print("\nLanjut ke menu lain? (y/n): ");
             next = sc.next();
