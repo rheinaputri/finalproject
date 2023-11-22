@@ -114,17 +114,23 @@ public class Gudang {
                         String tanggalMasuk = sc.next();
                         System.out.print("Kode Barang \t: ");
                         String kodeBarangMasuk = sc.next();
-                        System.out.print("Nama Barang \t: ");
-                        sc.nextLine();
-                        String namaBarangMasuk = sc.nextLine();
-                        String lokasiMasuk = "";  // Menyesuaikan nilai pada array data barang
+                        String namaBarangMasuk = "";  // Menyesuaikan nilai pada array data barang
                         int indexBarangMasuk = -1;
+                        for (i = 1; i < barang.length; i++) {
+                            if (barang[i][0].equals(kodeBarangMasuk)) {
+                                namaBarangMasuk = barang[i][1];
+                                indexBarangMasuk = i;
+                                break;
+                            }
+                        }
+                        System.out.println("Nama Barang \t: " + namaBarangMasuk);
+                        String lokasiMasuk = "";  // Menyesuaikan nilai pada array data barang
                         for (i = 1; i < barang.length; i++) {
                             if (barang[i][0].equals(kodeBarangMasuk)) {
                                 lokasiMasuk = barang[i][2];
                                 indexBarangMasuk = i;
                                 break;
-                            }
+                            } 
                         }
                         if (indexBarangMasuk != -1) {
                             System.out.print("Jumlah Masuk \t: ");
@@ -132,14 +138,21 @@ public class Gudang {
                             jumlah[indexBarangMasuk][0] += jumlahMasuk;
                             sc.nextLine();
 
-                            System.out.println("Lokasi di " + lokasiMasuk);
+                            // System.out.println("Lokasi di " + lokasiMasuk);
+                            // System.out.println("Jumlah saat ini : " + jumlah[indexBarangMasuk][0]);
+                            
+                        System.out.println(" ");
+                        System.out.printf("%-15s %-15s %-15s %-15s\n", barang[0][0], barang[0][1], barang[0][2], barang[0][3]);
+                        System.out.printf("%-15s %-15s %-15s %-15s", barang[indexBarangMasuk][0], barang[indexBarangMasuk][1], barang[indexBarangMasuk][2], jumlah[indexBarangMasuk][0]);
+
                         } else {
                             System.out.println("Barang tidak ditemukan.");
                         }
 
                         i++;
 
-                        System.out.print("Input barang masuk lagi? (y/n): ");
+                        System.out.println();
+                        System.out.print("\nInput barang masuk lagi? (y/n): ");
                         next = sc.nextLine();
 
                         if (next.equalsIgnoreCase("n")) {
@@ -155,9 +168,6 @@ public class Gudang {
                     String tanggalKeluar = sc.next();
                     System.out.print("Kode Barang \t: ");
                     String kodeBarangKeluar = sc.next();
-                    // System.out.print("Nama Barang \t: ");
-                    // sc.nextLine();
-                    // String namaBarangKeluar = sc.nextLine();
                     String namaBarangKeluar = "";  // Menyesuaikan nilai pada array data barang
                     int indexBarangKeluar = -1;
                     for (i = 1; i < barang.length; i++) {
@@ -183,14 +193,19 @@ public class Gudang {
                         int jumlahKeluar = sc.nextInt();
                         jumlah[indexBarangKeluar][0] -= jumlahKeluar;
                         sc.nextLine();
-                        System.out.println("Lokasi di \t: " + lokasiKeluar);
+                        // System.out.println("Lokasi di \t: " + lokasiKeluar);
+                        // System.out.println("Jumlah saat ini : " + jumlah[indexBarangKeluar][0]);
+                        System.out.println(" ");
+                        System.out.printf("%-15s %-15s %-15s %-15s\n", barang[0][0], barang[0][1], barang[0][2], barang[0][3]);
+                        System.out.printf("%-15s %-15s %-15s %-15s", barang[indexBarangKeluar][0], barang[indexBarangKeluar][1], barang[indexBarangKeluar][2], jumlah[indexBarangKeluar][0]);
                     } else {
                         System.out.println("Barang tidak ditemukan.");
                     } 
 
                     i++;
 
-                    System.out.print("Input barang keluar lagi? (y/n): ");
+                    System.out.println();
+                    System.out.print("\nInput barang keluar lagi? (y/n): ");
                     next = sc.nextLine();
 
                     if (next.equalsIgnoreCase("n")) {
