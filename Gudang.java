@@ -167,28 +167,26 @@ public class Gudang {
                             break;
                             
                         }
-                    }
+                    } 
                     System.out.println("Nama Barang \t: " + namaBarangKeluar);
                     String lokasiKeluar = "";  // Menyesuaikan nilai pada array data barang
-                    // int indexBarangKeluar = -1;
                     for (i = 1; i < barang.length; i++) {
                         if (barang[i][0].equals(kodeBarangKeluar)) {
                             lokasiKeluar = barang[i][2];
                             indexBarangKeluar = i;
                             break;
                             
-                        }
+                        } 
                     }
                     if (indexBarangKeluar != -1) {
                         System.out.print("Jumlah Keluar\t: ");
                         int jumlahKeluar = sc.nextInt();
                         jumlah[indexBarangKeluar][0] -= jumlahKeluar;
                         sc.nextLine();
-
-                         System.out.println("Lokasi di \t" + lokasiKeluar);
+                        System.out.println("Lokasi di \t: " + lokasiKeluar);
                     } else {
                         System.out.println("Barang tidak ditemukan.");
-                    }
+                    } 
 
                     i++;
 
@@ -201,7 +199,7 @@ public class Gudang {
                 } 
             } else if (lakukan == 7) {
                 //Update Data Barang
-                System.out.print("\n===================Update Data Barang===================");
+                System.out.print("\n=================== Update Data Barang ===================");
                 System.out.print("\nMasukkan kode barang: ");
                 kode = sc.next();
                 int kodeUpdate = -1;
