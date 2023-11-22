@@ -15,22 +15,22 @@ public class Gudang {
         barang[0][2] = "Lokasi";
         barang[0][3] = "jumlah";
 
-        barang[1][0] = "645748";
+        barang[1][0] = "666222";
         barang[1][1] = "Beras";
         barang[1][2] = "Rak 1";
         jumlah[1][0] = 50;
 
-        barang[2][0] = "694736";
+        barang[2][0] = "666333";
         barang[2][1] = "Mie Instan";
         barang[2][2] = "Rak 2";
         jumlah[2][0] = 65;
 
-        barang[3][0] = "698364";
+        barang[3][0] = "666444";
         barang[3][1] = "Snack";
         barang[3][2] = "Rak 3";
         jumlah[3][0] = 25;
 
-        barang[4][0] = "678342";
+        barang[4][0] = "666555";
         barang[4][1] = "Roti";
         barang[4][2] = "Rak 4";
         jumlah[4][0] = 100;
@@ -81,17 +81,19 @@ public class Gudang {
                 if (opsi == 1) {
                     int i = 1;
                     while (true) {
-                        System.out.print("Kode Barang : ");
+                        System.out.print("Tanggal \t: ");
+                        String tanggalKeluar = sc.next();
+                        System.out.print("Kode Barang \t: ");
                         String kodeBaru = sc.next();
                         sc.nextLine();
                         barang[4+i][0] = kodeBaru;
-                        System.out.print("Nama Barang : ");
+                        System.out.print("Nama Barang \t: ");
                         String namaBaru = sc.nextLine();
                         barang[4+i][1] = namaBaru;
-                        System.out.print("Lokasi : ");
+                        System.out.print("Lokasi \t: ");
                         String lokasiBaru = sc.nextLine();
                         barang[4+i][2] = lokasiBaru;
-                        System.out.print("Jumlah : ");
+                        System.out.print("Jumlah \t: ");
                         int jumlahBaru = sc.nextInt();
                         jumlah[4+i][0] = jumlahBaru;
                         sc.nextLine();
@@ -153,16 +155,28 @@ public class Gudang {
                     String tanggalKeluar = sc.next();
                     System.out.print("Kode Barang \t: ");
                     String kodeBarangKeluar = sc.next();
-                    System.out.print("Nama Barang \t: ");
-                    sc.nextLine();
-                    String namaBarangKeluar = sc.nextLine();
-                    String lokasiKeluar = "";  // Menyesuaikan nilai pada array data barang
+                    // System.out.print("Nama Barang \t: ");
+                    // sc.nextLine();
+                    // String namaBarangKeluar = sc.nextLine();
+                    String namaBarangKeluar = "";  // Menyesuaikan nilai pada array data barang
                     int indexBarangKeluar = -1;
+                    for (i = 1; i < barang.length; i++) {
+                        if (barang[i][0].equals(kodeBarangKeluar)) {
+                            namaBarangKeluar = barang[i][1];
+                            indexBarangKeluar = i;
+                            break;
+                            
+                        }
+                    }
+                    System.out.println("Nama Barang \t: " + namaBarangKeluar);
+                    String lokasiKeluar = "";  // Menyesuaikan nilai pada array data barang
+                    // int indexBarangKeluar = -1;
                     for (i = 1; i < barang.length; i++) {
                         if (barang[i][0].equals(kodeBarangKeluar)) {
                             lokasiKeluar = barang[i][2];
                             indexBarangKeluar = i;
                             break;
+                            
                         }
                     }
                     if (indexBarangKeluar != -1) {
@@ -171,7 +185,7 @@ public class Gudang {
                         jumlah[indexBarangKeluar][0] -= jumlahKeluar;
                         sc.nextLine();
 
-                        System.out.println("Lokasi di " + lokasiKeluar);
+                         System.out.println("Lokasi di \t" + lokasiKeluar);
                     } else {
                         System.out.println("Barang tidak ditemukan.");
                     }
