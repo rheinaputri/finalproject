@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Gudang {
+public class Gudang{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -211,9 +211,10 @@ public class Gudang {
                     if (next.equalsIgnoreCase("n")) {
                         break;
                     }
-                } 
-            } else if (lakukan == 7) {
-                //Update Data Barang
+                }
+//Update Data Barang
+        } else if (lakukan == 7) {
+            while (true) {
                 System.out.print("\n=================== Update Data Barang ===================");
                 System.out.print("\nMasukkan kode barang: ");
                 kode = sc.next();
@@ -225,43 +226,40 @@ public class Gudang {
                         break;
                     }
                 }
-
                 if (kodeUpdate != -1) {
-                    //Tampilkan data barang yang ditemukan
-                    System.out.println("\nData barang yang ditemukan:");
-                    System.out.printf("%-15s %-15s %-15s %-15s\n", barang[0][0], barang[0][1], barang[0][2], barang[0][3]);
-                    System.out.printf("%-15s %-15s %-15s %-15s\n", barang[kodeUpdate][0], barang[kodeUpdate][1], barang[kodeUpdate][2], jumlah[kodeUpdate][0]);
-                    
-                    //Masukkan data baru
-                    System.out.println("Nama atau lokasi baru");
-                    System.out.print("\nNama Barang : ");
-                    sc.nextLine();
-                    namabarang = sc.nextLine();
-                    System.out.print("Lokasi Baru : ");
-                    String lokasi = sc.nextLine();
-                    // sc.nextLine();
+                System.out.println("\nData barang yang ditemukan:");
+                System.out.printf("Kode barang\t: %s", barang[kodeUpdate][0]);
+                System.out.printf("\nNama barang\t: %s", barang[kodeUpdate][1]);
+                System.out.printf("\nLokasi\t\t: %s\n", barang[kodeUpdate][2]);
+                
+                //Masukkan data baru
+                System.out.println("\nMasukkan data baru:");
+                System.out.print("Nama barang\t: ");
+                sc.nextLine();
+                namabarang = sc.nextLine();
+                System.out.print("Lokasi Baru\t: ");
+                String lokasi = sc.nextLine();
 
-                    //Update data barang
-                    barang[kodeUpdate][1] = namabarang;
-                    // barang[kodeUpdate][2] = quantity;
-                    barang[kodeUpdate][2] = lokasi;
+                barang[kodeUpdate][1] = namabarang;
+                barang[kodeUpdate][2] = lokasi;
 
-                    //Tampilkan data barang yang sudah diupdate
-                    System.out.println("\nData barang berhasil diupdate!");
-                    System.out.printf("%-15s %-15s %-15s %-15s\n", barang[0][0], barang[0][1], barang[0][2], barang[0][3]);
-                    System.out.printf("%-15s %-15s %-15s %-15s", barang[kodeUpdate][0], barang[kodeUpdate][1], barang[kodeUpdate][2], jumlah[kodeUpdate][0]);
-                    } else {
-                        System.out.println("Barang dengan kode " + kodeUpdate + " tidak ditemukan");
-                    }
+                //Tampilkan data barang yang sudah diupdate
+                System.out.println("\nData barang berhasil diupdate!");
+                System.out.printf("%-15s %-15s %-15s %-15s\n", barang[0][0], barang[0][1], barang[0][2], barang[0][3]);
+                System.out.printf("%-15s %-15s %-15s %-15s", barang[kodeUpdate][0], barang[kodeUpdate][1], barang[kodeUpdate][2], jumlah[kodeUpdate][0]);
+                } else {
+                    System.out.println("Barang dengan kode " + kodeUpdate + " tidak ditemukan");
+                }
+                System.out.println();
+                System.out.print("\nInput update data barang lagi? (y/n): ");
+                next = sc.nextLine();
+
+                if (next.equalsIgnoreCase("n")) {
+                    break;
+                }
             }
-            System.out.println();
-            System.out.print("\nInput update data barang lagi? (y/n): ");
-            next = sc.nextLine();
-
-            if (next.equalsIgnoreCase("n")) {
-                break;
-            }
-
+        }
+        
             System.out.print("\nLanjut ke menu lain? (y/n): ");
             next = sc.next();
 
