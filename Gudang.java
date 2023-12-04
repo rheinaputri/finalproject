@@ -104,6 +104,12 @@ public class Gudang {
                                 int jumlahBaru = sc.nextInt();
                                 jumlah[i][0] = jumlahBaru;
 
+                                System.out.println(" ");
+                                printHeader();
+                                System.out.printf("%-15s %-15s %-15s %-15s", barang[i][0],
+                                    barang[i][1], barang[i][2],
+                                    jumlah[i][0]);
+
                                 System.out.print("\nInput barang masuk lagi? (y/n): ");
                                 next = sc.next();
                                 if (next.equalsIgnoreCase("n")) {
@@ -282,7 +288,6 @@ public class Gudang {
     }
 
     static void printHeader() {
-        System.out.printf("%-15s %-15s %-15s %-15s\n", "Kode Barang", "Nama Barang", "Lokasi", "jumlah");
+        System.out.printf("%-15s %-15s %-15s %-15s\n", "Kode Barang", "Nama Barang", "Lokasi", "Jumlah");
     }
-    
 }
