@@ -178,7 +178,7 @@ public class Gudang {
                     String kodeBarangKeluar = sc.next();
                     String namaBarangKeluar = ""; // Menyesuaikan nilai pada array data barang
                     int indexBarangKeluar = -1;
-                    for (int i = 1; i < barang.length; i++) {
+                    for (int i = 0; i < barang.length; i++) {
                         if (barang[i][0].equals(kodeBarangKeluar)) {
                             namaBarangKeluar = barang[i][1];
                             indexBarangKeluar = i;
@@ -188,7 +188,7 @@ public class Gudang {
                     }
                     System.out.println("Nama Barang \t: " + namaBarangKeluar);
                     String lokasiKeluar = ""; // Menyesuaikan nilai pada array data barang
-                    for (int i = 1; i < barang.length; i++) {
+                    for (int i = 0; i < barang.length; i++) {
                         if (barang[i][0].equals(kodeBarangKeluar)) {
                             lokasiKeluar = barang[i][2];
                             indexBarangKeluar = i;
