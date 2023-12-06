@@ -222,6 +222,52 @@ public class Gudang {
                 }
         
 
+            } else if(lakukan == 6) {
+                while (true) 
+                    // String namaBarangKeluar = ""; // Menyesuaikan nilai pada array data barang
+                    int indexBarangKeluar = -1;
+                    for (int i = 0; i < barang.length; i++) {
+                        if (jumlah[i][0]=0) {
+                            // namaBarangKeluar = barang[i][1];
+                            indexBarangKeluar = i;
+                            break;
+
+                        }
+                    }
+                    // System.out.println("Nama Barang \t: " + namaBarangKeluar);
+                    // String lokasiKeluar = ""; // Menyesuaikan nilai pada array data barang
+                    // for (int i = 0; i < barang.length; i++) {
+                    //     if (barang[i][0].equals(kodeBarangKeluar)) {
+                    //         lokasiKeluar = barang[i][2];
+                    //         indexBarangKeluar = i;
+                    //         break;
+
+                    //     }
+                    // }
+                    // if (indexBarangKeluar != -1) {
+                    //     System.out.print("Jumlah Keluar\t: ");
+                    //     int jumlahKeluar = sc.nextInt();
+                    //     jumlah[indexBarangKeluar][0] -= jumlahKeluar;
+                    //     sc.nextLine();
+                        System.out.println(" ");
+                        printHeader();
+                        System.out.printf("%-15s %-15s %-15s %-15s", barang[indexBarangKeluar][0],
+                                barang[indexBarangKeluar][1], barang[indexBarangKeluar][2],
+                                jumlah[indexBarangKeluar][0]);
+                    } else {
+                        System.out.println("Barang tidak ditemukan.");
+                    }
+
+                    // i++;
+
+                    System.out.println();
+                    System.out.print("\nInput barang keluar lagi? (y/n): ");
+                    next = sc.nextLine();
+
+                    if (next.equalsIgnoreCase("n")) {
+                        break;
+                    }
+                }
             } else if (lakukan == 7) {
                 // Update Data Barang
                 System.out.print("\n=================== Update Data Barang ===================");
