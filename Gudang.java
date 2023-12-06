@@ -154,7 +154,7 @@ public class Gudang {
                         }
                     }
                 }
-                // barangkeluar
+    // barangkeluar
             } else if (lakukan == 3) {
                 // int i = 1;
                 while (true) {
@@ -195,28 +195,6 @@ public class Gudang {
                         break;
                     }
                 }
-            } else if (lakukan == 6) {
-                while (true) {
-                    System.out.println("Rekap Barang Habis:");
-                    System.out.println(" ");
-                    System.out.printf("%-15s %-15s\n", "Kode Barang", "Nama Barang");
-                    int indexBarangHabis = -1;
-
-                    for (int i = 0; i < jumlah.length; i++) {
-                        for (int j = 0; j < jumlah[i].length; j++) {
-                            if (jumlah[i][0] == 0 ) {
-                                indexBarangHabis = i;
-                                if (indexBarangHabis != -1) {
-                                    System.out.printf("%-15s %-15s\n", barang[indexBarangHabis][0], barang[indexBarangHabis][1]);
-                                } else {
-                                    System.out.println("tidak ditemukan");
-                                }                                            
-                            }
-                        }
-                    }
-                    break;
-                }
-                
             } else if (lakukan == 7) {
                 // Update Data Barang
                 System.out.print("\n=================== Update Data Barang ===================");
