@@ -9,26 +9,32 @@ public class Gudang {
 
         String[][] barang = new String[7][4];
         int[][] jumlah = new int[7][1];
+        String[][] keterangan = new String[7][1];
 
         barang[0][0] = "666222";
         barang[0][1] = "Beras";
         barang[0][2] = "Rak 1";
         jumlah[0][0] = 50;
+        keterangan[0][0] = "";
+        
 
         barang[1][0] = "666333";
         barang[1][1] = "Mie Instan";
         barang[1][2] = "Rak 2";
         jumlah[1][0] = 65;
+        keterangan[0][0] = "";
 
         barang[2][0] = "666444";
         barang[2][1] = "Snack";
         barang[2][2] = "Rak 3";
         jumlah[2][0] = 25;
+        keterangan[0][0] = "";
 
         barang[3][0] = "666555";
         barang[3][1] = "Roti";
         barang[3][2] = "Rak 4";
         jumlah[3][0] = 100;
+        keterangan[0][0] = "";
 
         System.out.println("================ Login ================");
         System.out.print("Username : ");
@@ -194,6 +200,61 @@ public class Gudang {
                         break;
                     }
                 }
+            } else if (menu == 5){
+                while (true) {
+                    System.out.print("Kode Barang \t\t: ");
+                    String kodeBarangRusak = sc.next();
+                    String namaBarangRusak = ""; // Menyesuaikan nilai pada array data barang
+                    int indexBarangRusak = -1;
+                    for (int i = 0; i < barang.length; i++) {
+                        if (barang[i][0].equals(kodeBarangRusak)) {
+                            namaBarangRusak = barang[i][1];
+                            indexBarangRusak = i;
+                            break;
+
+                        }
+                    }
+                        System.out.println("Nama Barang \t\t: " + namaBarangRusak);
+                        String lokasiRusak = ""; // Menyesuaikan nilai pada array data barang
+                        for (int i = 0; i < barang.length; i++) {
+                            if (barang[i][0].equals(kodeBarangRusak)) {
+                                lokasiRusak = barang[i][2];
+                                indexBarangRusak = i;
+                                break;
+
+                            }
+                    }
+                
+                    System.out.print("Keterangan \t\t: ");
+                            String keteranganRusak = sc.next();
+                                    keterangan[indexBarangRusak][0] = keteranganRusak;
+
+                    if (indexBarangRusak != -1) {
+                        System.out.print("Jumlah Barang Rusak \t: ");
+                        int jumlahRusak = sc.nextInt();
+                        jumlah[indexBarangRusak][0] -= jumlahRusak;
+                        sc.nextLine();
+                        System.out.println(" ");
+                        // printHeader();
+                        // System.out.println();
+                        System.out.println("***************************** Input Barang Rusak *****************************");
+                        System.out.printf("%-15s %-15s %-15s %-15s %-15s\n", "Kode Barang", "Nama Barang", "Lokasi", "Jumlah Rusak", "Keterangan");
+                        System.out.printf("%-15s %-15s %-15s %-15s %-15s", barang[indexBarangRusak][0],
+                                barang[indexBarangRusak][1], barang[indexBarangRusak][2],
+                                jumlah[indexBarangRusak][0], keterangan[indexBarangRusak][0]);
+                    } else {
+                        System.out.println("Barang tidak ditemukan.");
+                    }
+
+                        System.out.println();
+                        System.out.print("\nInput barang rusak lagi? (y/n): ");
+                        next = sc.nextLine();
+
+                        if (next.equalsIgnoreCase("n")) {
+                            break;
+                            }
+                }
+            
             } else if (menu == 7) {
                 System.out.println("Rekap Barang Habis:");
                 System.out.println(" ");
