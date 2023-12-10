@@ -259,6 +259,43 @@ public class Gudang {
                                 }
                     }
                 
+                }  else if (menu == 6) {
+//Rekap Barang Banyak Terjual
+                    System.out.println("Rekap Barang Banyak Terjual");
+                    String[][] rekap = new String[barang.length][2];
+
+                    for (int i = 0; i < barang.length; i++) {
+                        if (barang[i][0] != null) {
+                            rekap[i][0] = barang[i][1];
+                            rekap[i][1] = Integer.toString(jumlah[i][0]);
+                        }
+                    }
+                    for (int i = 0; i < rekap.length; i++) {
+                        for (int j = i + 1; j < rekap.length; j++) {
+                            if (rekap[i][1] != null && rekap[j][1] != null) {
+                                int jumlah1 = Integer.parseInt(rekap[i][1]);
+                                int jumlah2 = Integer.parseInt(rekap[j][1]);
+
+                                if (jumlah1 < jumlah2) {
+                                    String tempnama = rekap[i][0];
+                                    String tempjumlah = rekap[i][1];
+
+                                    rekap[i][0] = rekap[j][0];
+                                    rekap[i][1] = rekap[j][1];
+
+                                    rekap[j][0] = tempnama;
+                                    rekap[j][1] = tempjumlah;
+                                }
+                            }
+                        }
+                    }
+                    System.out.printf("%-15s %-15s\n", "Nama Barang", "Jumlah Terjual");
+                    for (int i = 0; i < rekap.length; i++) {
+                        if (rekap[i][0] != null) {
+                            System.out.printf("%-15s %-15s\n", rekap[i][0], rekap[i][1]);
+                        }
+                    }
+
                 } else if (menu == 7) {
                     System.out.println("Rekap Barang Habis:");
                     System.out.println(" ");
