@@ -45,6 +45,7 @@ public class Gudang {
 
             while (true) {
                 if (username.equalsIgnoreCase("manager") && password.equals("manager")) {
+                    System.out.println();
                     System.out.println("==================== Manager ===================");
                     System.out.println("1. Data Barang");
                     System.out.println("2. Input Barang Baru");
@@ -56,6 +57,7 @@ public class Gudang {
                     System.out.println("8. Update Data Barang");
                     System.out.println("================================================");
                 } else if (username.equalsIgnoreCase("karyawan") && password.equals("karyawan")) {
+                    System.out.println();
                     System.out.println("==================== Karyawan ===================");
                     System.out.println("1. Data Barang");
                     System.out.println("2. Input Barang Baru");
@@ -66,7 +68,9 @@ public class Gudang {
                     System.out.println("7. Rekap Barang Habis");
                     System.out.println("================================================");
                 } else {
-                    System.out.println("username password tidak sesuai");
+                    System.out.println();
+                    System.out.println("username atau password tidak sesuai");
+                    System.out.println();
                     break;
                 }
                 System.out.print("Pilih menu \t: ");
@@ -77,10 +81,10 @@ public class Gudang {
                     printHeader();
                     for (int i = 0; i < barang.length; i++) {
                         if(barang[i][0] != null) {
-                            System.out.printf("%-15s %-15s %-15s %s\n", barang[i][0], barang[i][1], barang[i][2], jumlah[i][0]);
+                            System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[i][0], barang[i][1], barang[i][2], jumlah[i][0]);
                         }
                     }
-                    System.out.println("=================================================");
+                    System.out.println("===========================================================");
                     // barangMasuk
                 } else if (menu == 2) {
                     for (int i = 0; i < barang.length; i++) {
@@ -110,9 +114,10 @@ public class Gudang {
 
                                 System.out.println(" ");
                                 printHeader();
-                                System.out.printf("%-15s %-15s %-15s %-15s", barang[i][0],
+                                System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[i][0],
                                         barang[i][1], barang[i][2],
                                         jumlah[i][0]);
+                                System.out.println("===========================================================");
 
                                 System.out.print("\nInput barang baru lagi? (y/n): ");
                                 next = sc.next();
@@ -127,7 +132,7 @@ public class Gudang {
                         System.out.print("Tanggal \t: ");
                         String tanggalMasuk = sc.next();
                         System.out.print("Kode Barang \t: ");
-                        int kodeBarangMasuk = sc.nextInt();
+                        String kodeBarangMasuk = sc.next();
                         String namaBarangMasuk = ""; // Menyesuaikan nilai pada array data barang
                         int indexBarangMasuk = -1;
                 
@@ -148,9 +153,10 @@ public class Gudang {
                             sc.nextLine();
                             System.out.println(" ");
                             printHeader();
-                            System.out.printf("%-15s %-15s %-15s %-15s", barang[indexBarangMasuk][0],
+                            System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[indexBarangMasuk][0],
                                     barang[indexBarangMasuk][1], barang[indexBarangMasuk][2],
                                     jumlah[indexBarangMasuk][0]);
+                            System.out.println("===========================================================");
                         } else {
                             // Display message if barang is not found
                             System.out.println();
@@ -189,9 +195,10 @@ public class Gudang {
                             sc.nextLine();
                             System.out.println(" ");
                             printHeader();
-                            System.out.printf("%-15s %-15s %-15s %-15s", barang[indexBarangKeluar][0],
+                            System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[indexBarangKeluar][0],
                                     barang[indexBarangKeluar][1], barang[indexBarangKeluar][2],
                                     jumlah[indexBarangKeluar][0]);
+                            System.out.println("===========================================================");
                         } else {
                             System.out.println();
                             System.out.println("Barang tidak ditemukan.");
@@ -218,20 +225,21 @@ public class Gudang {
 
                             }
                         }
-                            System.out.println("Nama Barang \t\t: " + namaBarangRusak);
-                            String lokasiRusak = ""; // Menyesuaikan nilai pada array data barang
-                            for (int i = 0; i < barang.length; i++) {
-                                if (barang[i][0].equals(kodeBarangRusak)) {
-                                    lokasiRusak = barang[i][2];
-                                    indexBarangRusak = i;
-                                    break;
 
-                                }
+                        System.out.println("Nama Barang \t\t: " + namaBarangRusak);
+                        String lokasiRusak = ""; // Menyesuaikan nilai pada array data barang
+                        for (int i = 0; i < barang.length; i++) {
+                            if (barang[i][0].equals(kodeBarangRusak)) {
+                                lokasiRusak = barang[i][2];
+                                indexBarangRusak = i;
+                                break;
+
+                            }
                         }
                     
                         System.out.print("Keterangan \t\t: ");
-                                String keteranganRusak = sc.next();
-                                        keterangan[indexBarangRusak][0] = keteranganRusak;
+                        String keteranganRusak = sc.next();
+                        keterangan[indexBarangRusak][0] = keteranganRusak;
 
                         if (indexBarangRusak != -1) {
                             System.out.print("Jumlah Barang Rusak \t: ");
@@ -242,10 +250,13 @@ public class Gudang {
                             // printHeader();
                             // System.out.println();
                             System.out.println("***************************** Input Barang Rusak *****************************");
-                            System.out.printf("%-15s %-15s %-15s %-15s %-15s\n", "Kode Barang", "Nama Barang", "Lokasi", "Jumlah Rusak", "Keterangan");
-                            System.out.printf("%-15s %-15s %-15s %-15s %-15s", barang[indexBarangRusak][0],
+                            System.out.println();
+                            System.out.println("===================================================================================");
+                            System.out.printf("| %-15s | %-15s | %-10s | %-12s | %-15s |\n", "Kode Barang", "Nama Barang", "Lokasi", "Jumlah Rusak", "Keterangan");
+                            System.out.printf("| %-15s | %-15s | %-10s | %-12s | %-15s |\n", barang[indexBarangRusak][0],
                                     barang[indexBarangRusak][1], barang[indexBarangRusak][2],
                                     jumlah[indexBarangRusak][0], keterangan[indexBarangRusak][0]);
+                            System.out.println("===================================================================================");
                         } else {
                             System.out.println("Barang tidak ditemukan.");
                         }
@@ -262,6 +273,7 @@ public class Gudang {
                 }  else if (menu == 6) {
 //Rekap Barang Banyak Terjual
                     System.out.println("Rekap Barang Banyak Terjual");
+                    System.out.println();
                     String[][] rekap = new String[barang.length][2];
 
                     for (int i = 0; i < barang.length; i++) {
@@ -289,12 +301,15 @@ public class Gudang {
                             }
                         }
                     }
-                    System.out.printf("%-15s %-15s\n", "Nama Barang", "Jumlah Terjual");
+                    System.out.println("=====================================");
+                    System.out.printf("| %-15s | %-15s |\n", "Nama Barang", "Jumlah Terjual");
+                    System.out.println("=====================================");
                     for (int i = 0; i < rekap.length; i++) {
                         if (rekap[i][0] != null) {
-                            System.out.printf("%-15s %-15s\n", rekap[i][0], rekap[i][1]);
+                            System.out.printf("| %-15s | %-15s |\n", rekap[i][0], rekap[i][1]);
                         }
                     }
+                    System.out.println("=====================================");
 
                 } else if (menu == 7) {
                     System.out.println("Rekap Barang Habis:");
@@ -315,7 +330,9 @@ public class Gudang {
                     }
 
                     if (found) {
-                        System.out.printf("%-15s %-15s\n", "Kode Barang", "Nama Barang");
+                        System.out.println("=====================================");
+                        System.out.printf("| %-15s | %-15s |\n", "Kode Barang", "Nama Barang");
+                        System.out.println("=====================================");
                     }
 
                     for (int i = 0; i < jumlah.length; i++) {
@@ -323,75 +340,85 @@ public class Gudang {
                             if (jumlah[i][0] == 0) {
                                 indexBarangHabis = i;
                                 if (indexBarangHabis != -1 && barang[indexBarangHabis][0] != null) {
-                                    System.out.printf("%-15s %-15s\n", barang[indexBarangHabis][0],
+                                    System.out.printf("| %-15s | %-15s |\n", barang[indexBarangHabis][0],
                                             barang[indexBarangHabis][1]);
                                 }
                             }
                         }
                     }
+                    System.out.println("=====================================");
 
                     if (!found) {
                         System.out.println("Tidak ada barang habis.");
                     }
 
                 } else if (menu == 8) {
-                    // Update Data Barang
-                    System.out.print("\n=================== Update Data Barang ===================");
-                    while (true) {
-                        System.out.print("\nMasukkan kode barang: ");
-                        String kodeUpdate = sc.next();
-                        int indexUpdate = -1;
+                    if (username.equalsIgnoreCase("manager") && password.equals("manager" )) {
+                        // Update Data Barang
+                        System.out.print("\n=================== Update Data Barang ===================");
+                        System.out.println();
+                        while (true) {
+                            System.out.print("\nMasukkan kode barang: ");
+                            String kodeUpdate = sc.next();
+                            int indexUpdate = -1;
 
-                        for (int i = 1; i < barang.length; i++) {
-                            if (barang[i][0] != null && barang[i][0].equals(kodeUpdate)) {
-                                indexUpdate = i;
+                            for (int i = 0; i < barang.length; i++) {
+                                if (barang[i][0] != null && barang[i][0].equals(kodeUpdate)) {
+                                    indexUpdate = i;
+                                    break;
+                                }
+                            }
+
+                            if (indexUpdate != -1) {
+                                // Tampilkan data barang yang ditemukan
+                                System.out.println("\nData barang yang ditemukan:");
+                                printHeader();
+                                System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[indexUpdate][0], barang[indexUpdate][1],
+                                        barang[indexUpdate][2], jumlah[indexUpdate][0]);
+                                System.out.println("===========================================================");
+                                System.out.println(" ");
+
+                                System.out.println("Nama atau lokasi baru");
+                                System.out.print("\nNama Barang : ");
+                                sc.nextLine();
+                                namabarang = sc.nextLine();
+                                System.out.print("Lokasi Baru : ");
+                                String lokasi = sc.nextLine();
+
+                                // Update data barang
+                                barang[indexUpdate][1] = namabarang;
+                                barang[indexUpdate][2] = lokasi;
+
+                                // Tampilkan data barang yang sudah diupdate
+                                System.out.println("\nData barang setelah di-update:]");
+                                printHeader();
+                                System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[indexUpdate][0], barang[indexUpdate][1],
+                                        barang[indexUpdate][2], jumlah[indexUpdate][0]);
+                                System.out.println("===========================================================");        
+                            } else {
+                                System.out.println();
+                                System.out.println("Barang dengan kode " + kodeUpdate + " tidak ditemukan");
+                            }
+
+                            System.out.print("\nUpdate data barang lagi? (y/n): ");
+                            next = sc.next();
+
+                            if (next.equalsIgnoreCase("n")) {
                                 break;
                             }
                         }
-
-                        if (indexUpdate != -1) {
-                            // Tampilkan data barang yang ditemukan
-                            System.out.println("\nData barang yang ditemukan:");
-                            printHeader();
-                            System.out.printf("%-15s %-15s %-15s %-15s\n", barang[indexUpdate][0], barang[indexUpdate][1],
-                                    barang[indexUpdate][2], jumlah[indexUpdate][0]);
-                            System.out.println(" ");
-
-                            System.out.println("Nama atau lokasi baru");
-                            System.out.print("\nNama Barang : ");
-                            sc.nextLine();
-                            namabarang = sc.nextLine();
-                            System.out.print("Lokasi Baru : ");
-                            String lokasi = sc.nextLine();
-
-                            // Update data barang
-                            barang[indexUpdate][1] = namabarang;
-                            barang[indexUpdate][2] = lokasi;
-
-                            // Tampilkan data barang yang sudah diupdate
-                            System.out.println("\nData barang berhasil diupdate!");
-                            printHeader();
-                            System.out.printf("%-15s %-15s %-15s %-15s", barang[indexUpdate][0], barang[indexUpdate][1],
-                                    barang[indexUpdate][2], jumlah[indexUpdate][0]);
-                        } else {
-                            System.out.println();
-                            System.out.println("Barang dengan kode " + indexUpdate + " tidak ditemukan");
-                        }
-
-                        System.out.print("\nInput update data barang lagi? (y/n): ");
-                        next = sc.next();
-
-                        if (next.equalsIgnoreCase("n")) {
-                            break;
-                        }
-                    }
+                    } else {
+                        System.out.println(" ");
+                        System.out.println("Maaf, Anda tidak memiliki akses untuk menu ini.");
+                    }  
                 }
 
                 System.out.print("\nLanjut ke menu lain? (y/n): ");
                 next = sc.next();
 
                 if (next.equalsIgnoreCase("n")) {
-                    System.out.println("***** SUCCESSFULLY *****");
+                    System.out.println(" ");
+                    System.out.println("***** SUCCESSFULL *****");
                     System.exit(0);
                 }
                 System.out.println();
@@ -401,6 +428,8 @@ public class Gudang {
     }
 
     static void printHeader() {
-        System.out.printf("%-15s %-15s %-15s %-15s\n", "Kode Barang", "Nama Barang", "Lokasi", "Jumlah");
+        System.out.println("===========================================================");
+        System.out.printf("| %-15s | %-15s | %-10s | %-5s |\n", "Kode Barang", "Nama Barang", "Lokasi", "Jumlah");
+        System.out.println("===========================================================");
     }
 }
