@@ -134,12 +134,14 @@ public class Gudang {
                         System.out.print("Kode Barang \t: ");
                         String kodeBarangMasuk = sc.next();
                         String namaBarangMasuk = ""; // Menyesuaikan nilai pada array data barang
+                        int jumlahBarang = 0;
                         int indexBarangMasuk = -1;
                 
                         // Check if the specified kodeBarangMasuk exists in the barang array
                         for (int i = 0; i < barang.length; i++) {
                             if (barang[i][0] != null && barang[i][0].equals(kodeBarangMasuk)) {
                                 namaBarangMasuk = barang[i][1];
+                                jumlahBarang = jumlah[i][0];
                                 indexBarangMasuk = i;
                                 break;
                             }
@@ -147,6 +149,7 @@ public class Gudang {
                 
                         if (indexBarangMasuk != -1) {
                             System.out.println("Nama Barang \t: " + namaBarangMasuk);
+                            System.out.println("Jumlah Barang \t: " + jumlahBarang);
                             System.out.print("Jumlah Masuk \t: ");
                             int jumlahMasuk = sc.nextInt();
                             jumlah[indexBarangMasuk][0] += jumlahMasuk;
@@ -178,17 +181,21 @@ public class Gudang {
                         System.out.print("Kode Barang \t: ");
                         String kodeBarangKeluar = sc.next();
                         String namaBarangKeluar = "";
+                        int jumlahBarang = 0;
                         int indexBarangKeluar = -1;
                         for (int i = 0; i < barang.length; i++) {
                             if (barang[i][0] != null && barang[i][0].equals(kodeBarangKeluar)) {
                                 namaBarangKeluar = barang[i][1];
+                                jumlahBarang = jumlah[i][0];
                                 indexBarangKeluar = i;
                                 break;
                             }
                         }
-                        System.out.println("Nama Barang \t: " + namaBarangKeluar);
+                        
 
                         if (indexBarangKeluar != -1) {
+                            System.out.println("Nama Barang \t: " + namaBarangKeluar);
+                            System.out.println("Jumlah Barang \t: " + jumlahBarang);
                             System.out.print("Jumlah Keluar\t: ");
                             int jumlahKeluar = sc.nextInt();
                             jumlah[indexBarangKeluar][0] -= jumlahKeluar;
@@ -255,7 +262,7 @@ public class Gudang {
                             System.out.printf("| %-15s | %-15s | %-10s | %-12s | %-15s |\n", "Kode Barang", "Nama Barang", "Lokasi", "Jumlah Rusak", "Keterangan");
                             System.out.printf("| %-15s | %-15s | %-10s | %-12s | %-15s |\n", barang[indexBarangRusak][0],
                                     barang[indexBarangRusak][1], barang[indexBarangRusak][2],
-                                    jumlah[indexBarangRusak][0], keterangan[indexBarangRusak][0]);
+                                    jumlahRusak, keterangan[indexBarangRusak][0]);
                             System.out.println("===================================================================================");
                         } else {
                             System.out.println("Barang tidak ditemukan.");
@@ -317,13 +324,17 @@ public class Gudang {
                     int indexBarangHabis = -1;
                     boolean found = false;
 
+                    System.out.println("=====================================");
+                    System.out.printf("| %-15s | %-15s |\n", "Kode Barang", "Nama Barang");
+                    System.out.println("=====================================");
+
                     for (int i = 0; i < jumlah.length; i++) {
                         for (int j = 0; j < jumlah[i].length; j++) {
                             if (jumlah[i][0] == 0) {
                                 indexBarangHabis = i;
                                 if (indexBarangHabis != -1 && barang[indexBarangHabis][0] != null) {
-                                    found = true;
-                                    break;
+                                    System.out.printf("| %-15s | %-15s |\n", barang[indexBarangHabis][0], barang[indexBarangHabis][1]);
+                                    found = true;                                
                                 }
                             }
                         }
@@ -331,24 +342,12 @@ public class Gudang {
 
                     if (found) {
                         System.out.println("=====================================");
-                        System.out.printf("| %-15s | %-15s |\n", "Kode Barang", "Nama Barang");
-                        System.out.println("=====================================");
                     }
-
-                    for (int i = 0; i < jumlah.length; i++) {
-                        for (int j = 0; j < jumlah[i].length; j++) {
-                            if (jumlah[i][0] == 0) {
-                                indexBarangHabis = i;
-                                if (indexBarangHabis != -1 && barang[indexBarangHabis][0] != null) {
-                                    System.out.printf("| %-15s | %-15s |\n", barang[indexBarangHabis][0],
-                                            barang[indexBarangHabis][1]);
-                                }
-                            }
-                        }
-                    }
-                    System.out.println("=====================================");
 
                     if (!found) {
+                        System.out.printf("| %-15s | %-15s |\n", "", "");
+                        System.out.println("=====================================");
+                        System.out.println();
                         System.out.println("Tidak ada barang habis.");
                     }
 
