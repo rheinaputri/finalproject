@@ -10,6 +10,7 @@ public class Gudang {
         String[][] barang = new String[7][4];
         int[][] jumlah = new int[7][1];
         String[][] keterangan = new String[7][1];
+        int[][] rekap = new int[7][1];
 
         barang[0][0] = "666222";
         barang[0][1] = "Beras";
@@ -199,6 +200,7 @@ public class Gudang {
                             System.out.print("Jumlah Keluar\t: ");
                             int jumlahKeluar = sc.nextInt();
                             jumlah[indexBarangKeluar][0] -= jumlahKeluar;
+                            rekap[indexBarangKeluar][0] += jumlahKeluar;
                             sc.nextLine();
                             System.out.println(" ");
                             printHeader();
@@ -281,42 +283,24 @@ public class Gudang {
 //Rekap Barang Banyak Terjual
                     System.out.println("Rekap Barang Banyak Terjual");
                     System.out.println();
-                    String[][] rekap = new String[barang.length][2];
+                    int maxIndex = -1;
+                    int maxQuantity = -1;
 
-                    for (int i = 0; i < barang.length; i++) {
-                        if (barang[i][0] != null) {
-                            rekap[i][0] = barang[i][1];
-                            rekap[i][1] = Integer.toString(jumlah[i][0]);
-                        }
-                    }
                     for (int i = 0; i < rekap.length; i++) {
-                        for (int j = i + 1; j < rekap.length; j++) {
-                            if (rekap[i][1] != null && rekap[j][1] != null) {
-                                int jumlah1 = Integer.parseInt(rekap[i][1]);
-                                int jumlah2 = Integer.parseInt(rekap[j][1]);
-
-                                if (jumlah1 < jumlah2) {
-                                    String tempnama = rekap[i][0];
-                                    String tempjumlah = rekap[i][1];
-
-                                    rekap[i][0] = rekap[j][0];
-                                    rekap[i][1] = rekap[j][1];
-
-                                    rekap[j][0] = tempnama;
-                                    rekap[j][1] = tempjumlah;
-                                }
-                            }
+                        if (rekap[i][0] > maxQuantity) {
+                            maxQuantity = rekap[i][0];
+                            maxIndex = i;
                         }
                     }
-                    System.out.println("=====================================");
-                    System.out.printf("| %-15s | %-15s |\n", "Nama Barang", "Jumlah Terjual");
-                    System.out.println("=====================================");
-                    for (int i = 0; i < rekap.length; i++) {
-                        if (rekap[i][0] != null) {
-                            System.out.printf("| %-15s | %-15s |\n", rekap[i][0], rekap[i][1]);
-                        }
+                    if (maxIndex != -1) {
+                        System.out.println("=====================================");
+                        System.out.printf("| %-15s | %-15s |\n", "Nama Barang", "Banyak Terjual");
+                        System.out.println("=====================================");
+                        System.out.printf("| %-15s | %-15s |\n", barang[maxIndex][1], rekap[maxIndex][0]);
+                        System.out.println("=====================================");
+                    } else {
+                        System.out.println("Tidak ada barang yang terjual");
                     }
-                    System.out.println("=====================================");
 
                 } else if (menu == 7) {
                     System.out.println("Rekap Barang Habis:");
