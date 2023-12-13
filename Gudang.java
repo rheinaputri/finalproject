@@ -206,7 +206,7 @@ public class Gudang {
                             System.out.print("Jumlah Keluar\t: ");
                             int jumlahKeluar = sc.nextInt();
                             jumlah[indexBarangKeluar][0] -= jumlahKeluar;
-                            rekap[indexBarangKeluar][0] = jumlahKeluar;
+                            rekap[indexBarangKeluar][0] += jumlahKeluar;
                             sc.nextLine();
                             System.out.println(" ");
                             printHeader();
