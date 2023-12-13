@@ -33,17 +33,19 @@ public class Gudang {
         barang[3][2] = "Rak 4";
         jumlah[3][0] = 100;
 
+//login
         while (true) {
-            System.out.println("================ Login ================");
+            System.out.println();
+            System.out.println("========================== Login ==========================");
             System.out.print("Username : ");
             username = sc.nextLine();
             System.out.print("Password : ");
             password = sc.nextLine();
 
             while (true) {
-                if (username.equalsIgnoreCase("manager") && password.equals("manager")) {
-                    System.out.println();
-                    System.out.println("==================== Manager ===================");
+                if (username.equalsIgnoreCase("manager") && password.equalsIgnoreCase("manager")) {
+                    // System.out.println();
+                    System.out.println("========================= Manager =========================");
                     System.out.println("1. Data Barang");
                     System.out.println("2. Input Barang Baru");
                     System.out.println("3. Input Barang Masuk");
@@ -53,10 +55,10 @@ public class Gudang {
                     System.out.println("7. Rekap Barang Banyak Terjual");
                     System.out.println("8. Rekap Barang Habis");
                     System.out.println("9. Update Data Barang");
-                    System.out.println("================================================");
-                } else if (username.equalsIgnoreCase("karyawan") && password.equals("karyawan")) {
-                    System.out.println();
-                    System.out.println("==================== Karyawan ===================");
+                    System.out.println("===========================================================");
+                } else if (username.equalsIgnoreCase("karyawan") && password.equalsIgnoreCase("karyawan")) {
+                    // System.out.println();
+                    System.out.println("========================= Karyawan =========================");
                     System.out.println("1. Data Barang");
                     System.out.println("2. Input Barang Baru");
                     System.out.println("3. Input Barang Masuk");
@@ -65,7 +67,7 @@ public class Gudang {
                     System.out.println("6. Rekap Barang Rusak");
                     System.out.println("7. Rekap Barang Banyak Terjual");
                     System.out.println("8. Rekap Barang Habis");
-                    System.out.println("================================================");
+                    System.out.println("===========================================================");
                 } else {
                     System.out.println();
                     System.out.println("username atau password tidak sesuai");
@@ -77,7 +79,7 @@ public class Gudang {
                 
                 if (menu == 1) { 
 // dataBarang
-                    System.out.println(" ");
+                    // System.out.println(" ");
                     System.out.println("======================= DATA BARANG =======================");
                     printHeader();
                     for (int i = 0; i < barang.length; i++) {
@@ -89,12 +91,13 @@ public class Gudang {
 
                 } else if (menu == 2) { 
 //input barang baru
+                    System.out.println("======================= BARANG BARU =======================");
+                    System.out.println();
                     for (int i = 0; i < barang.length; i++) {
 
-                        System.out.print("Tanggal \t: ");
-                        String tanggalMasuk = sc.next();
-
                         if (barang[i][0] == null) {
+                            System.out.print("Tanggal \t: ");
+                            String tanggalMasuk = sc.next();
                             System.out.print("Kode Barang \t: ");
                             String kodeBaru = sc.next();
                             sc.nextLine();
@@ -131,7 +134,8 @@ public class Gudang {
                                 }
                             }
                         }
-                    }
+                    } 
+                
                 } else if (menu == 3) { 
 //input barang masuk
                     while (true) {
@@ -364,9 +368,9 @@ public class Gudang {
                         System.out.println();
                         System.out.println("Tidak ada barang habis.");
                     }
-
-                } else if (menu == 9) { //update barang
-                    if (username.equalsIgnoreCase("manager") && password.equals("manager" )) {
+//update barang
+                } else if (menu == 9) {
+                    if (username.equalsIgnoreCase("manager") && password.equalsIgnoreCase("manager" )) {
                         System.out.print("\n=================== Update Data Barang ===================");
                         System.out.println();
                         while (true) {
