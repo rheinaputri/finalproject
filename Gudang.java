@@ -11,7 +11,7 @@ public class Gudang {
         int[][] jumlah = new int[7][1];
         String[][] keterangan = new String[7][1];
         int[][] nilaiRusak = new int[jumlah.length][jumlah[0].length];
-        int[][] rekap = new int[7][1];
+        int[][] terjual = new int[7][1];
 
         barang[0][0] = "666222";
         barang[0][1] = "Beras";
@@ -79,7 +79,6 @@ public class Gudang {
                 
                 if (menu == 1) { 
 // dataBarang
-                    // System.out.println(" ");
                     System.out.println("======================= DATA BARANG =======================");
                     printHeader();
                     for (int i = 0; i < barang.length; i++) {
@@ -206,7 +205,7 @@ public class Gudang {
                             System.out.print("Jumlah Keluar\t: ");
                             int jumlahKeluar = sc.nextInt();
                             jumlah[indexBarangKeluar][0] -= jumlahKeluar;
-                            rekap[indexBarangKeluar][0] += jumlahKeluar;
+                            terjual[indexBarangKeluar][0] += jumlahKeluar;
                             sc.nextLine();
                             System.out.println(" ");
                             printHeader();
@@ -326,15 +325,15 @@ public class Gudang {
                     System.out.printf("| %-15s | %-15s |\n", "Nama Barang", "Banyak Terjual");
                     System.out.println("=====================================");
 
-                    for (int i = 0; i < rekap.length; i++) {
-                        if (rekap[i][0] > maxQuantity) {
-                            maxQuantity = rekap[i][0];
+                    for (int i = 0; i < terjual.length; i++) {
+                        if (terjual[i][0] > maxQuantity) {
+                            maxQuantity = terjual[i][0];
                             maxIndex = i;
                         }
                     }
 
                     if (maxIndex != -1 && barang[maxIndex][0] != null) {
-                        System.out.printf("| %-15s | %-15s |\n", barang[maxIndex][1], rekap[maxIndex][0]);
+                        System.out.printf("| %-15s | %-15s |\n", barang[maxIndex][1], terjual[maxIndex][0]);
                         found = true; 
                     }
 
@@ -451,7 +450,6 @@ public class Gudang {
                 System.out.println();
             }
         }
-        
     }
 
     static void printHeader() {
