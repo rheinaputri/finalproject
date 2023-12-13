@@ -206,7 +206,7 @@ public class Gudang {
                             System.out.print("Jumlah Keluar\t: ");
                             int jumlahKeluar = sc.nextInt();
                             jumlah[indexBarangKeluar][0] -= jumlahKeluar;
-                            rekap[indexBarangKeluar][0] += jumlahKeluar;
+                            rekap[indexBarangKeluar][0] = jumlahKeluar;
                             sc.nextLine();
                             System.out.println(" ");
                             printHeader();
@@ -314,13 +314,17 @@ public class Gudang {
                         System.out.println();
                         System.out.println("Tidak ada barang rusak.");
                     }
-                }
-                 else if (menu == 7) { 
-//Rekap Barang Banyak Terjual
+                } else if (menu == 7) { //input barang banyak terjual
+                    //Rekap Barang Banyak Terjual
                     System.out.println("Rekap Barang Banyak Terjual");
                     System.out.println();
                     int maxIndex = -1;
-                    int maxQuantity = -1;
+                    int maxQuantity = 0;
+                    boolean found = false;
+
+                    System.out.println("=====================================");
+                    System.out.printf("| %-15s | %-15s |\n", "Nama Barang", "Banyak Terjual");
+                    System.out.println("=====================================");
 
                     for (int i = 0; i < rekap.length; i++) {
                         if (rekap[i][0] > maxQuantity) {
@@ -328,14 +332,21 @@ public class Gudang {
                             maxIndex = i;
                         }
                     }
-                    if (maxIndex != -1) {
-                        System.out.println("=====================================");
-                        System.out.printf("| %-15s | %-15s |\n", "Nama Barang", "Banyak Terjual");
-                        System.out.println("=====================================");
+
+                    if (maxIndex != -1 && barang[maxIndex][0] != null) {
                         System.out.printf("| %-15s | %-15s |\n", barang[maxIndex][1], rekap[maxIndex][0]);
+                        found = true; 
+                    }
+
+                    if (found) {
                         System.out.println("=====================================");
-                    } else {
-                        System.out.println("Tidak ada barang yang terjual");
+                    }
+
+                    if (!found) {
+                        System.out.printf("| %-15s | %-15s |\n", "", "");
+                        System.out.println("=====================================");
+                        System.out.println();
+                        System.out.println("Belum ada barang yang terjual");
                     }
 
                 } else if (menu == 8) { //rekap barang habis
