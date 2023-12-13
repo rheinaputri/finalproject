@@ -137,6 +137,8 @@ public class Gudang {
                 
                 } else if (menu == 3) { 
 //input barang masuk
+                    System.out.println("======================= BARANG MASUK ======================");
+                    System.out.println();
                     while (true) {
                         System.out.print("Tanggal \t: ");
                         String tanggalMasuk = sc.next();
@@ -182,6 +184,8 @@ public class Gudang {
                     }
                 } else if (menu == 4) { 
 //input barang keluar
+                    System.out.println("====================== BARANG KELUAR ======================");
+                    System.out.println();
                     while (true) {
                         System.out.print("Tanggal \t: ");
                         String tanggalKeluar = sc.next();
@@ -227,8 +231,8 @@ public class Gudang {
                     }
                 } else if (menu == 5){ 
 //input barang rusak
-                    System.out.println();
-                    System.out.println("***************************** Input Barang Rusak *****************************");
+                    // System.out.println();
+                    System.out.println("======================= BARANG RUSAK ======================");
                     System.out.println();
                     while (true) {
                         System.out.print("Tanggal \t\t: ");
@@ -282,7 +286,7 @@ public class Gudang {
                 
                  } else if (menu == 6) { 
 //rekap barang rusak
-                    System.out.println("Rekap Barang Rusak:");
+                    System.out.println("=================== REKAP BARANG RUSAK ====================");
                     System.out.println(" ");
                     int indexBarangRusak = -1;
                     boolean found = false;
@@ -313,9 +317,9 @@ public class Gudang {
                         System.out.println();
                         System.out.println("Tidak ada barang rusak.");
                     }
-                } else if (menu == 7) { //input barang banyak terjual
+                } else if (menu == 7) { 
                     //Rekap Barang Banyak Terjual
-                    System.out.println("Rekap Barang Banyak Terjual");
+                    System.out.println("=================== REKAP BARANG TERJUAL ==================");
                     System.out.println();
                     int maxIndex = -1;
                     int maxQuantity = 0;
@@ -349,6 +353,7 @@ public class Gudang {
                     }
 
                 } else if (menu == 8) { //rekap barang habis
+                    System.out.println("=================== REKAP BARANG HABIS ====================");
                     System.out.println("Rekap Barang Habis:");
                     System.out.println(" ");
                     int indexBarangHabis = -1;
@@ -381,7 +386,8 @@ public class Gudang {
 //update barang
                 } else if (menu == 9) {
                     if (username.equalsIgnoreCase("manager") && password.equalsIgnoreCase("manager" )) {
-                        System.out.print("\n=================== Update Data Barang ===================");
+                        System.out.println("==================== UPDATE DATA BARANG ===================");
+
                         System.out.println();
                         while (true) {
                             System.out.print("\nMasukkan kode barang: ");
