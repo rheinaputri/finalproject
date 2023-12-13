@@ -36,7 +36,7 @@ public class Gudang {
 //login
         while (true) {
             System.out.println();
-            System.out.println("========================== Login ==========================");
+            System.out.println("========================== LOGIN ==========================");
             System.out.print("Username : ");
             username = sc.nextLine();
             System.out.print("Password : ");
