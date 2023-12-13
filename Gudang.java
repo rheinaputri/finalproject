@@ -80,6 +80,7 @@ public class Gudang {
                 if (menu == 1) { 
 // dataBarang
                     System.out.println("======================= DATA BARANG =======================");
+                    System.out.println();
                     printHeader();
                     for (int i = 0; i < barang.length; i++) {
                         if(barang[i][0] != null) {
@@ -91,55 +92,52 @@ public class Gudang {
                 } else if (menu == 2) { 
 //input barang baru
                     System.out.println("======================= BARANG BARU =======================");
-                    System.out.println();
+
                     for (int i = 0; i < barang.length; i++) {
 
                         if (barang[i][0] == null) {
+                            System.out.println();
                             System.out.print("Tanggal \t: ");
                             String tanggalMasuk = sc.next();
                             System.out.print("Kode Barang \t: ");
                             String kodeBaru = sc.next();
                             sc.nextLine();
                             barang[i][0] = kodeBaru;
-                        }
 
-                        if (barang[i][1] == null) {
                             System.out.print("Nama Barang \t: ");
                             String namaBaru = sc.nextLine();
                             barang[i][1] = namaBaru;
-                        }
 
-                        if (barang[i][2] == null) {
                             System.out.print("Lokasi Barang \t: ");
                             String lokasiBaru = sc.nextLine();
                             barang[i][2] = lokasiBaru;
 
-                            if (jumlah[i][0] == 0) {
-                                System.out.print("Jumlah barang \t: ");
-                                int jumlahBaru = sc.nextInt();
-                                jumlah[i][0] = jumlahBaru;
+                            System.out.print("Jumlah barang \t: ");
+                            int jumlahBaru = sc.nextInt();
+                            jumlah[i][0] = jumlahBaru;
 
-                                System.out.println(" ");
-                                printHeader();
-                                System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[i][0],
-                                        barang[i][1], barang[i][2],
-                                        jumlah[i][0]);
-                                System.out.println("===========================================================");
+                            System.out.println(" ");
+                            printHeader();
+                            System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[i][0],
+                                    barang[i][1], barang[i][2], jumlah[i][0]);
+                            System.out.println("===========================================================");
 
-                                System.out.print("\nInput barang baru lagi? (y/n): ");
-                                next = sc.next();
-                                if (next.equalsIgnoreCase("n")) {
-                                    break;
-                                }
+                            System.out.print("\nInput barang baru lagi? (y/n): ");
+                            next = sc.next();
+
+                            if (next.equalsIgnoreCase("n")) {
+                                break;
                             }
-                        }
+                        }             
                     } 
                 
                 } else if (menu == 3) { 
-//input barang masuk
+                    // Input barang masuk
                     System.out.println("======================= BARANG MASUK ======================");
-                    System.out.println();
-                    while (true) {
+                    boolean inputLagi = true;
+                
+                    while (inputLagi) {
+                        System.out.println();
                         System.out.print("Tanggal \t: ");
                         String tanggalMasuk = sc.next();
                         System.out.print("Kode Barang \t: ");
@@ -175,18 +173,27 @@ public class Gudang {
                             System.out.println("Barang tidak ditemukan.");
                         }
                 
-                        System.out.print("\nInput barang masuk lagi? (y/n): ");
-                        next = sc.next();
-                
-                        if (next.equalsIgnoreCase("n")) {
-                            break;
-                        }
+                        while (true) {
+                            System.out.print("\nInput barang masuk lagi? (y/n): ");
+                            next = sc.next();
+                    
+                            if (next.equalsIgnoreCase("n")) {
+                                inputLagi = false;
+                                break;
+                            } else if (next.equalsIgnoreCase("y")) {
+                                break; 
+                            } else if (!next.equalsIgnoreCase("y")) {
+                                System.out.println("Masukkan y/n");
+                            } 
+                        }    
                     }
                 } else if (menu == 4) { 
 //input barang keluar
                     System.out.println("====================== BARANG KELUAR ======================");
-                    System.out.println();
-                    while (true) {
+                    boolean inputLagi = true;
+
+                    while (inputLagi) {
+                        System.out.println();
                         System.out.print("Tanggal \t: ");
                         String tanggalKeluar = sc.next();
                         System.out.print("Kode Barang \t: ");
@@ -194,6 +201,7 @@ public class Gudang {
                         String namaBarangKeluar = "";
                         int jumlahBarang = 0;
                         int indexBarangKeluar = -1;
+
                         for (int i = 0; i < barang.length; i++) {
                             if (barang[i][0] != null && barang[i][0].equals(kodeBarangKeluar)) {
                                 namaBarangKeluar = barang[i][1];
@@ -222,19 +230,27 @@ public class Gudang {
                             System.out.println("Barang tidak ditemukan.");
                         }
 
-                        System.out.print("\nInput barang keluar lagi? (y/n): ");
-                        next = sc.next();
-
-                        if (next.equalsIgnoreCase("n")) {
-                            break;
+                        while (true) {
+                            System.out.print("\nInput barang keluar lagi? (y/n): ");
+                            next = sc.next();
+                    
+                            if (next.equalsIgnoreCase("n")) {
+                                inputLagi = false;
+                                break;
+                            } else if (next.equalsIgnoreCase("y")) {
+                                break; 
+                            } else if (!next.equalsIgnoreCase("y")) {
+                                System.out.println("Masukkan y/n");
+                            } 
                         }
                     }
                 } else if (menu == 5){ 
 //input barang rusak
-                    // System.out.println();
                     System.out.println("======================= BARANG RUSAK ======================");
-                    System.out.println();
-                    while (true) {
+                    boolean inputLagi = true;
+
+                    while (inputLagi) {
+                        System.out.println();
                         System.out.print("Tanggal \t\t: ");
                         String tanggalMasuk = sc.next();
                         System.out.print("Kode Barang \t\t: ");
@@ -275,13 +291,19 @@ public class Gudang {
                             System.out.println("Barang tidak ditemukan.");
                         }
 
-                        System.out.println();
-                        System.out.print("\nInput barang rusak lagi? (y/n): ");
-                        next = sc.nextLine();
-
-                        if (next.equalsIgnoreCase("n")) {
-                            break;
+                        while (true) {
+                            System.out.print("\nInput barang rusak lagi? (y/n): ");
+                            next = sc.next();
+                    
+                            if (next.equalsIgnoreCase("n")) {
+                                inputLagi = false;
+                                break;
+                            } else if (next.equalsIgnoreCase("y")) {
+                                break; 
+                            } else if (!next.equalsIgnoreCase("y")) {
+                                System.out.println("Masukkan y/n");
                             }
+                        }    
                     }
                 
                  } else if (menu == 6) { 
@@ -388,7 +410,6 @@ public class Gudang {
                     if (username.equalsIgnoreCase("manager") && password.equalsIgnoreCase("manager" )) {
                         System.out.println("==================== UPDATE DATA BARANG ===================");
 
-                        System.out.println();
                         while (true) {
                             System.out.print("\nMasukkan kode barang: ");
                             String kodeUpdate = sc.next();
@@ -445,15 +466,22 @@ public class Gudang {
                     }  
                 }
 
-                System.out.print("\nLanjut ke menu lain? (y/n): ");
-                next = sc.next();
+                while (true) {
+                    System.out.println();
+                    System.out.print("Lanjut ke menu lain? (y/n): ");
+                    next = sc.next();
+                    System.out.println();
+                    
 
-                if (next.equalsIgnoreCase("n")) {
-                    System.out.println(" ");
-                    System.out.println("***** SUCCESSFULL *****");
-                    System.exit(0);
+                    if (next.equalsIgnoreCase("n")) {
+                        System.out.println("========================= SUCCESS =========================");
+                        System.exit(0);
+                    } else if (next.equalsIgnoreCase("y")) {
+                        break;
+                    } else {
+                        System.out.println("tidak valid");
+                    }
                 }
-                System.out.println();
             }
         }
     }
