@@ -75,8 +75,10 @@ public class Gudang {
                 System.out.print("Pilih menu \t: ");
                 menu = sc.nextInt();
                 
-                if (menu == 1) { // dataBarang
+                if (menu == 1) { 
+// dataBarang
                     System.out.println(" ");
+                    System.out.println("======================= DATA BARANG =======================");
                     printHeader();
                     for (int i = 0; i < barang.length; i++) {
                         if(barang[i][0] != null) {
@@ -85,7 +87,8 @@ public class Gudang {
                     }
                     System.out.println("===========================================================");
 
-                } else if (menu == 2) { //input barang baru
+                } else if (menu == 2) { 
+//input barang baru
                     for (int i = 0; i < barang.length; i++) {
 
                         System.out.print("Tanggal \t: ");
@@ -129,7 +132,8 @@ public class Gudang {
                             }
                         }
                     }
-                } else if (menu == 3) { //input barang masuk
+                } else if (menu == 3) { 
+//input barang masuk
                     while (true) {
                         System.out.print("Tanggal \t: ");
                         String tanggalMasuk = sc.next();
@@ -173,7 +177,8 @@ public class Gudang {
                             break;
                         }
                     }
-                } else if (menu == 4) { //input barang keluar
+                } else if (menu == 4) { 
+//input barang keluar
                     while (true) {
                         System.out.print("Tanggal \t: ");
                         String tanggalKeluar = sc.next();
@@ -217,8 +222,8 @@ public class Gudang {
                             break;
                         }
                     }
-                } else if (menu == 5){ //input barang rusak
-                    
+                } else if (menu == 5){ 
+//input barang rusak
                     System.out.println();
                     System.out.println("***************************** Input Barang Rusak *****************************");
                     System.out.println();
@@ -272,7 +277,8 @@ public class Gudang {
                             }
                     }
                 
-                 } else if (menu == 6) { //rekap barang rusak
+                 } else if (menu == 6) { 
+//rekap barang rusak
                     System.out.println("Rekap Barang Rusak:");
                     System.out.println(" ");
                     int indexBarangRusak = -1;
@@ -305,7 +311,7 @@ public class Gudang {
                         System.out.println("Tidak ada barang rusak.");
                     }
                 }
-                 else if (menu == 7) { //input barang banyak terjual
+                 else if (menu == 7) { 
 //Rekap Barang Banyak Terjual
                     System.out.println("Rekap Barang Banyak Terjual");
                     System.out.println();
