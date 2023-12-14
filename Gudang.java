@@ -33,8 +33,7 @@ public class Gudang {
         barang[3][2] = "Rak 4";
         jumlah[3][0] = 100;
 
-//login
-        while (true) {
+        while (true) { //Login
             System.out.println();
             System.out.println("========================== LOGIN ==========================");
             System.out.print("Username : ");
@@ -44,27 +43,25 @@ public class Gudang {
 
             while (true) {
                 if (username.equalsIgnoreCase("manager") && password.equalsIgnoreCase("manager")) {
-                    // System.out.println();
                     System.out.println("========================= Manager =========================");
                     printMenu();
                     System.out.println("9. Update Data Barang");
                     System.out.println("===========================================================");
+
                 } else if (username.equalsIgnoreCase("karyawan") && password.equalsIgnoreCase("karyawan")) {
-                    // System.out.println();
                     System.out.println("========================= Karyawan =========================");
                     printMenu();
                     System.out.println("===========================================================");
+
                 } else {
-                    System.out.println();
-                    System.out.println("username atau password tidak sesuai");
-                    System.out.println();
+                    System.out.println("\nusername atau password tidak sesuai");
                     break;
                 }
+                
                 System.out.print("Pilih menu \t: ");
                 menu = sc.nextInt();
-                
-                if (menu == 1) { 
-// dataBarang
+            
+                if (menu == 1) { //Data barang
                     System.out.println("======================= DATA BARANG =======================");
                     System.out.println();
                     printHeader();
@@ -74,9 +71,8 @@ public class Gudang {
                         }
                     }
                     System.out.println("===========================================================");
-
-                } else if (menu == 2) { 
-                    // input barang baru
+ 
+                } else if (menu == 2) { //Input barang baru
                     System.out.println("======================= BARANG BARU =======================");
                     boolean inputLagi = true;
                 
@@ -129,11 +125,11 @@ public class Gudang {
                             }             
                         }
                     }
-                } else if (menu == 3 || menu == 4) {
+
+                } else if (menu == 3 || menu == 4) { //Input barang masuk/keluar
                     inputBarang(menu, barang, jumlah, terjual);
                     
-                } else if (menu == 5){ 
-//input barang rusak
+                } else if (menu == 5) { //input barang rusak
                     System.out.println("======================= BARANG RUSAK ======================");
                     boolean inputLagi = true;
 
@@ -175,6 +171,7 @@ public class Gudang {
                                     barang[indexBarangRusak][1], barang[indexBarangRusak][2],
                                     nilaiRusak[indexBarangRusak][0], keterangan[indexBarangRusak][0]);
                             System.out.println("===================================================================================");
+
                         } else {
                             System.out.println("Barang tidak ditemukan.");
                         }
@@ -194,8 +191,7 @@ public class Gudang {
                         }    
                     }
                 
-                 } else if (menu == 6) { 
-//rekap barang rusak
+                 } else if (menu == 6) { //Rekap barang rusak
                     System.out.println("=================== REKAP BARANG RUSAK ====================");
                     System.out.println(" ");
                     int indexBarangRusak = -1;
@@ -227,8 +223,7 @@ public class Gudang {
                         System.out.println();
                         System.out.println("Tidak ada barang rusak.");
                     }
-                } else if (menu == 7) { 
-                    //Rekap Barang Banyak Terjual
+                } else if (menu == 7) { //Rekap Barang Banyak Terjual
                     System.out.println("=================== REKAP BARANG TERJUAL ==================");
                     System.out.println();
                     int maxIndex = -1;
@@ -262,7 +257,7 @@ public class Gudang {
                         System.out.println("Belum ada barang yang terjual");
                     }
 
-                } else if (menu == 8) { //rekap barang habis
+                } else if (menu == 8) { //Rekap barang habis
                     System.out.println("=================== REKAP BARANG HABIS ====================");
                     System.out.println("Rekap Barang Habis:");
                     System.out.println(" ");
@@ -293,12 +288,13 @@ public class Gudang {
                         System.out.println();
                         System.out.println("Tidak ada barang habis.");
                     }
-//update barang
-                } else if (menu == 9) {
+
+                } else if (menu == 9) { //Update barang
                     if (username.equalsIgnoreCase("manager") && password.equalsIgnoreCase("manager" )) {
                         System.out.println("==================== UPDATE DATA BARANG ===================");
+                        boolean inputLagi = true;
 
-                        while (true) {
+                        while (inputLagi) {
                             System.out.print("\nKode Barang : ");
                             String kodeUpdate = sc.next();
                             int indexUpdate = -1;
@@ -311,46 +307,50 @@ public class Gudang {
                             }
 
                             if (indexUpdate != -1) {
-                                // Tampilkan data barang yang ditemukan
                                 System.out.println("\nData barang yang ditemukan:");
                                 printHeader();
                                 System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[indexUpdate][0], barang[indexUpdate][1],
                                         barang[indexUpdate][2], jumlah[indexUpdate][0]);
                                 System.out.println("===========================================================");
-                                System.out.println(" ");
 
-                                System.out.println("Nama atau lokasi baru");
+                                System.out.println("\nNama atau lokasi baru:");
                                 System.out.print("\nNama Barang : ");
                                 sc.nextLine();
                                 namabarang = sc.nextLine();
                                 System.out.print("Lokasi Baru : ");
                                 String lokasi = sc.nextLine();
 
-                                // Update data barang
                                 barang[indexUpdate][1] = namabarang;
                                 barang[indexUpdate][2] = lokasi;
 
-                                // Tampilkan data barang yang sudah diupdate
-                                System.out.println("\nData barang setelah di-update:]");
+                                System.out.println("\nData barang setelah di-update:");
                                 printHeader();
                                 System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[indexUpdate][0], barang[indexUpdate][1],
                                         barang[indexUpdate][2], jumlah[indexUpdate][0]);
-                                System.out.println("===========================================================");        
+                                System.out.println("===========================================================");
+
                             } else {
                                 System.out.println();
                                 System.out.println("Barang dengan kode " + kodeUpdate + " tidak ditemukan");
                             }
 
-                            System.out.print("\nUpdate data barang lagi? (y/n): ");
-                            next = sc.next();
-
-                            if (next.equalsIgnoreCase("n")) {
-                                break;
+                            while (true) {
+                                System.out.print("\nUpdate data barang lagi? (y/n): ");
+                                next = sc.next();
+                    
+                                if (next.equalsIgnoreCase("n")) {
+                                    inputLagi = false;
+                                    break;
+                                } else if (next.equalsIgnoreCase("y")) {
+                                    break;
+                                } else {
+                                    System.out.println("Masukkan y/n");
+                                }
                             }
                         }
+
                     } else {
-                        System.out.println(" ");
-                        System.out.println("Maaf, Anda tidak memiliki akses untuk menu ini.");
+                        System.out.println("\nMaaf, Anda tidak memiliki akses untuk menu ini.");
                     }  
                 }
 
@@ -362,7 +362,8 @@ public class Gudang {
                     
 
                     if (next.equalsIgnoreCase("n")) {
-                        System.out.println("======================== ^ SUCCESS ^ ========================");
+                        System.out.println("======================= ^ SUCCESS ^ =======================");
+                        sc.close();
                         System.exit(0);
                     } else if (next.equalsIgnoreCase("y")) {
                         break;
@@ -371,6 +372,7 @@ public class Gudang {
                     }
                 }
             }
+        
         }
     }
 
@@ -431,9 +433,19 @@ public class Gudang {
                     System.out.print("Jumlah Masuk \t: ");
                     int jumlahMasuk = sc.nextInt();
                     jumlah[indexBarang][0] += jumlahMasuk;
+
                 } else if (menu == 4) {
-                    System.out.print("Jumlah Keluar\t: ");
-                    int jumlahKeluar = sc.nextInt();
+                    int jumlahKeluar;
+
+                    do {
+                        System.out.print("Jumlah Keluar\t: ");
+                        jumlahKeluar = sc.nextInt();
+
+                        if (jumlahKeluar > jumlahBarang) {
+                            System.out.println("\nJumlah keluar melebihi jumlah barang");
+                        }
+                    } while (jumlahKeluar > jumlahBarang);
+
                     jumlah[indexBarang][0] -= jumlahKeluar;
                     terjual[indexBarang][0] += jumlahKeluar;
                 }
@@ -450,7 +462,11 @@ public class Gudang {
             }
     
             while (true) {
-                System.out.print("\nInput barang lagi? (y/n): ");
+                if (menu == 3) {
+                    System.out.print("\nInput barang masuk lagi? (y/n): ");
+                } else if (menu == 4) {
+                    System.out.print("\nInput barang keluar lagi? (y/n): ");
+                }
                 next = sc.next();
     
                 if (next.equalsIgnoreCase("n")) {
