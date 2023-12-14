@@ -299,7 +299,7 @@ public class Gudang {
                         System.out.println("==================== UPDATE DATA BARANG ===================");
 
                         while (true) {
-                            System.out.print("\nMasukkan kode barang: ");
+                            System.out.print("\nKode Barang : ");
                             String kodeUpdate = sc.next();
                             int indexUpdate = -1;
 
