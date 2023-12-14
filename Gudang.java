@@ -129,119 +129,9 @@ public class Gudang {
                             }             
                         }
                     }
-                } else if (menu == 3) { 
-                    // Input barang masuk
-                    System.out.println("======================= BARANG MASUK ======================");
-                    boolean inputLagi = true;
-                
-                    while (inputLagi) {
-                        System.out.println();
-                        System.out.print("Tanggal \t: ");
-                        String tanggalMasuk = sc.next();
-                        System.out.print("Kode Barang \t: ");
-                        String kodeBarangMasuk = sc.next();
-                        String namaBarangMasuk = ""; // Menyesuaikan nilai pada array data barang
-                        int jumlahBarang = 0;
-                        int indexBarangMasuk = -1;
-                
-                        for (int i = 0; i < barang.length; i++) {
-                            if (barang[i][0] != null && barang[i][0].equals(kodeBarangMasuk)) {
-                                namaBarangMasuk = barang[i][1];
-                                jumlahBarang = jumlah[i][0];
-                                indexBarangMasuk = i;
-                                break;
-                            }
-                        }
-                
-                        if (indexBarangMasuk != -1) {
-                            System.out.println("Nama Barang \t: " + namaBarangMasuk);
-                            System.out.println("Jumlah Barang \t: " + jumlahBarang);
-                            System.out.print("Jumlah Masuk \t: ");
-                            int jumlahMasuk = sc.nextInt();
-                            jumlah[indexBarangMasuk][0] += jumlahMasuk;
-                            sc.nextLine();
-                            System.out.println(" ");
-                            printHeader();
-                            System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[indexBarangMasuk][0],
-                                    barang[indexBarangMasuk][1], barang[indexBarangMasuk][2],
-                                    jumlah[indexBarangMasuk][0]);
-                            System.out.println("===========================================================");
-                        } else {
-                            System.out.println();
-                            System.out.println("Barang tidak ditemukan.");
-                        }
-                
-                        while (true) {
-                            System.out.print("\nInput barang masuk lagi? (y/n): ");
-                            next = sc.next();
+                } else if (menu == 3 || menu == 4) {
+                    inputBarang(menu, barang, jumlah, terjual);
                     
-                            if (next.equalsIgnoreCase("n")) {
-                                inputLagi = false;
-                                break;
-                            } else if (next.equalsIgnoreCase("y")) {
-                                break; 
-                            } else if (!next.equalsIgnoreCase("y")) {
-                                System.out.println("Masukkan y/n");
-                            } 
-                        }    
-                    }
-                } else if (menu == 4) { 
-//input barang keluar
-                    System.out.println("====================== BARANG KELUAR ======================");
-                    boolean inputLagi = true;
-
-                    while (inputLagi) {
-                        System.out.println();
-                        System.out.print("Tanggal \t: ");
-                        String tanggalKeluar = sc.next();
-                        System.out.print("Kode Barang \t: ");
-                        String kodeBarangKeluar = sc.next();
-                        String namaBarangKeluar = "";
-                        int jumlahBarang = 0;
-                        int indexBarangKeluar = -1;
-
-                        for (int i = 0; i < barang.length; i++) {
-                            if (barang[i][0] != null && barang[i][0].equals(kodeBarangKeluar)) {
-                                namaBarangKeluar = barang[i][1];
-                                jumlahBarang = jumlah[i][0];
-                                indexBarangKeluar = i;
-                                break;
-                            }
-                        }
-                        
-                        if (indexBarangKeluar != -1) {
-                            System.out.println("Nama Barang \t: " + namaBarangKeluar);
-                            System.out.println("Jumlah Barang \t: " + jumlahBarang);
-                            System.out.print("Jumlah Keluar\t: ");
-                            int jumlahKeluar = sc.nextInt();
-                            jumlah[indexBarangKeluar][0] -= jumlahKeluar;
-                            terjual[indexBarangKeluar][0] += jumlahKeluar;
-                            sc.nextLine();
-                            System.out.println(" ");
-                            printHeader();
-                            System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[indexBarangKeluar][0],
-                                    barang[indexBarangKeluar][1], barang[indexBarangKeluar][2],
-                                    jumlah[indexBarangKeluar][0]);
-                            System.out.println("===========================================================");
-                        } else {
-                            System.out.println();
-                            System.out.println("Barang tidak ditemukan.");
-                        }
-
-                        while (true) {
-                            System.out.print("\nInput barang keluar lagi? (y/n): ");
-                            next = sc.next();
-                    
-                            if (next.equalsIgnoreCase("n")) {
-                                inputLagi = false;
-                                break;
-                            } else if (next.equalsIgnoreCase("y")) {
-                                break; 
-                            } else if (!next.equalsIgnoreCase("y")) {
-                                System.out.println("Masukkan y/n");
-                            } 
-                        }
-                    }
                 } else if (menu == 5){ 
 //input barang rusak
                     System.out.println("======================= BARANG RUSAK ======================");
@@ -472,7 +362,7 @@ public class Gudang {
                     
 
                     if (next.equalsIgnoreCase("n")) {
-                        System.out.println("========================= SUCCESS =========================");
+                        System.out.println("======================== ^ SUCCESS ^ ========================");
                         System.exit(0);
                     } else if (next.equalsIgnoreCase("y")) {
                         break;
@@ -499,5 +389,79 @@ public class Gudang {
         System.out.println("6. Rekap Barang Rusak");
         System.out.println("7. Rekap Barang Banyak Terjual");
         System.out.println("8. Rekap Barang Habis");
+    }
+
+    static void inputBarang(int menu, String[][] barang, int[][] jumlah, int[][] terjual) {
+        Scanner sc = new Scanner(System.in);
+
+        String next;
+
+        if (menu == 3) {
+            System.out.println("======================= BARANG MASUK ======================");
+        } else if (menu == 4) {
+            System.out.println("====================== BARANG KELUAR ======================");
+        }
+
+        boolean inputLagi = true;
+    
+        while (inputLagi) {
+            System.out.println();
+            System.out.print("Tanggal \t: ");
+            String tanggal = sc.next();
+            System.out.print("Kode Barang \t: ");
+            String kodeBarang = sc.next();
+            String namaBarang = "";
+            int jumlahBarang = 0;
+            int indexBarang = -1;
+    
+            for (int i = 0; i < barang.length; i++) {
+                if (barang[i][0] != null && barang[i][0].equals(kodeBarang)) {
+                    namaBarang = barang[i][1];
+                    jumlahBarang = jumlah[i][0];
+                    indexBarang = i;
+                    break;
+                }
+            }
+    
+            if (indexBarang != -1) {
+                System.out.println("Nama Barang \t: " + namaBarang);
+                System.out.println("Jumlah Barang \t: " + jumlahBarang);
+    
+                if (menu == 3) {
+                    System.out.print("Jumlah Masuk \t: ");
+                    int jumlahMasuk = sc.nextInt();
+                    jumlah[indexBarang][0] += jumlahMasuk;
+                } else if (menu == 4) {
+                    System.out.print("Jumlah Keluar\t: ");
+                    int jumlahKeluar = sc.nextInt();
+                    jumlah[indexBarang][0] -= jumlahKeluar;
+                    terjual[indexBarang][0] += jumlahKeluar;
+                }
+    
+                sc.nextLine();
+                System.out.println(" ");
+                printHeader();
+                System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[indexBarang][0],
+                        barang[indexBarang][1], barang[indexBarang][2], jumlah[indexBarang][0]);
+                System.out.println("===========================================================");
+            } else {
+                System.out.println();
+                System.out.println("Barang tidak ditemukan.");
+            }
+    
+            while (true) {
+                System.out.print("\nInput barang lagi? (y/n): ");
+                next = sc.next();
+    
+                if (next.equalsIgnoreCase("n")) {
+                    inputLagi = false;
+                    break;
+                } else if (next.equalsIgnoreCase("y")) {
+                    break;
+                } else {
+                    System.out.println("Masukkan y/n");
+                }
+            }
+        }
     }
 }
