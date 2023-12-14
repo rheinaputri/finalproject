@@ -46,27 +46,13 @@ public class Gudang {
                 if (username.equalsIgnoreCase("manager") && password.equalsIgnoreCase("manager")) {
                     // System.out.println();
                     System.out.println("========================= Manager =========================");
-                    System.out.println("1. Data Barang");
-                    System.out.println("2. Input Barang Baru");
-                    System.out.println("3. Input Barang Masuk");
-                    System.out.println("4. Input Barang Keluar");
-                    System.out.println("5. Input Barang Rusak");
-                    System.out.println("6. Rekap Barang Rusak");
-                    System.out.println("7. Rekap Barang Banyak Terjual");
-                    System.out.println("8. Rekap Barang Habis");
+                    printMenu();
                     System.out.println("9. Update Data Barang");
                     System.out.println("===========================================================");
                 } else if (username.equalsIgnoreCase("karyawan") && password.equalsIgnoreCase("karyawan")) {
                     // System.out.println();
                     System.out.println("========================= Karyawan =========================");
-                    System.out.println("1. Data Barang");
-                    System.out.println("2. Input Barang Baru");
-                    System.out.println("3. Input Barang Masuk");
-                    System.out.println("4. Input Barang Keluar");
-                    System.out.println("5. Input Barang Rusak");
-                    System.out.println("6. Rekap Barang Rusak");
-                    System.out.println("7. Rekap Barang Banyak Terjual");
-                    System.out.println("8. Rekap Barang Habis");
+                    printMenu();
                     System.out.println("===========================================================");
                 } else {
                     System.out.println();
@@ -90,47 +76,59 @@ public class Gudang {
                     System.out.println("===========================================================");
 
                 } else if (menu == 2) { 
-//input barang baru
+                    // input barang baru
                     System.out.println("======================= BARANG BARU =======================");
-
-                    for (int i = 0; i < barang.length; i++) {
-
-                        if (barang[i][0] == null) {
-                            System.out.println();
-                            System.out.print("Tanggal \t: ");
-                            String tanggalMasuk = sc.next();
-                            System.out.print("Kode Barang \t: ");
-                            String kodeBaru = sc.next();
-                            sc.nextLine();
-                            barang[i][0] = kodeBaru;
-
-                            System.out.print("Nama Barang \t: ");
-                            String namaBaru = sc.nextLine();
-                            barang[i][1] = namaBaru;
-
-                            System.out.print("Lokasi Barang \t: ");
-                            String lokasiBaru = sc.nextLine();
-                            barang[i][2] = lokasiBaru;
-
-                            System.out.print("Jumlah barang \t: ");
-                            int jumlahBaru = sc.nextInt();
-                            jumlah[i][0] = jumlahBaru;
-
-                            System.out.println(" ");
-                            printHeader();
-                            System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[i][0],
-                                    barang[i][1], barang[i][2], jumlah[i][0]);
-                            System.out.println("===========================================================");
-
-                            System.out.print("\nInput barang baru lagi? (y/n): ");
-                            next = sc.next();
-
-                            if (next.equalsIgnoreCase("n")) {
-                                break;
-                            }
-                        }             
-                    } 
+                    boolean inputLagi = true;
                 
+                    while (inputLagi) {
+                        for (int i = 0; i < barang.length; i++) {
+                            if (barang[i][0] == null) {
+                                System.out.println();
+                                System.out.print("Tanggal \t: ");
+                                String tanggalMasuk = sc.next();
+                                System.out.print("Kode Barang \t: ");
+                                String kodeBaru = sc.next();
+                                sc.nextLine();
+                                barang[i][0] = kodeBaru;
+                
+                                System.out.print("Nama Barang \t: ");
+                                String namaBaru = sc.nextLine();
+                                barang[i][1] = namaBaru;
+                
+                                System.out.print("Lokasi Barang \t: ");
+                                String lokasiBaru = sc.nextLine();
+                                barang[i][2] = lokasiBaru;
+                
+                                System.out.print("Jumlah barang \t: ");
+                                int jumlahBaru = sc.nextInt();
+                                jumlah[i][0] = jumlahBaru;
+                
+                                System.out.println(" ");
+                                printHeader();
+                                System.out.printf("| %-15s | %-15s | %-10s | %-6s |\n", barang[i][0],
+                                        barang[i][1], barang[i][2], jumlah[i][0]);
+                                System.out.println("===========================================================");
+                
+                                while (true) {
+                                    System.out.print("\nInput barang baru lagi? (y/n): ");
+                                    next = sc.next();
+                
+                                    if (next.equalsIgnoreCase("n")) {
+                                        inputLagi = false;
+                                        break;
+                                    } else if (next.equalsIgnoreCase("y")) {
+                                        break; 
+                                    } else {
+                                        System.out.println("Masukkan y/n");
+                                    } 
+                                }
+
+                                if (!inputLagi) {
+                                    break;
+                                }
+                            }             
+                        }
+                    }
                 } else if (menu == 3) { 
                     // Input barang masuk
                     System.out.println("======================= BARANG MASUK ======================");
@@ -490,5 +488,16 @@ public class Gudang {
         System.out.println("===========================================================");
         System.out.printf("| %-15s | %-15s | %-10s | %-5s |\n", "Kode Barang", "Nama Barang", "Lokasi", "Jumlah");
         System.out.println("===========================================================");
+    }
+    
+    static void printMenu() {
+        System.out.println("1. Data Barang");
+        System.out.println("2. Input Barang Baru");
+        System.out.println("3. Input Barang Masuk");
+        System.out.println("4. Input Barang Keluar");
+        System.out.println("5. Input Barang Rusak");
+        System.out.println("6. Rekap Barang Rusak");
+        System.out.println("7. Rekap Barang Banyak Terjual");
+        System.out.println("8. Rekap Barang Habis");
     }
 }
