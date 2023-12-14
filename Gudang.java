@@ -472,7 +472,7 @@ public class Gudang {
                     
 
                     if (next.equalsIgnoreCase("n")) {
-                        System.out.println("======================== ^ SUCCESS ^ ========================");
+                        System.out.println("========================= SUCCESS =========================");
                         System.exit(0);
                     } else if (next.equalsIgnoreCase("y")) {
                         break;
