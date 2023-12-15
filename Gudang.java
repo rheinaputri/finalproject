@@ -84,6 +84,20 @@ public class Gudang {
                                 String tanggalMasuk = sc.next();
                                 System.out.print("Kode Barang \t: ");
                                 String kodeBaru = sc.next();
+
+                                boolean kodeAda = false;
+                                for (int j = 0; j < barang.length; j++) {
+                                    if (barang[j][0] != null && barang[j][0].equals(kodeBaru)) {
+                                        kodeAda = true;
+                                        break;
+                                    }
+                                }
+
+                                if (kodeAda) {
+                                    System.out.println("Kode barang sudah ada. Mohon input kode yang berbeda.");
+                                    continue;
+                                }
+
                                 sc.nextLine();
                                 barang[i][0] = kodeBaru;
                 
