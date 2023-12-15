@@ -75,26 +75,32 @@ public class Gudang {
                 } else if (menu == 2) { //Input barang baru
                     System.out.println("======================= BARANG BARU =======================");
                     boolean inputLagi = true;
-                
+                    boolean tanggal = true;
+                    
                     while (inputLagi) {
                         for (int i = 0; i < barang.length; i++) {
                             if (barang[i][0] == null) {
-                                System.out.println();
-                                System.out.print("Tanggal \t: ");
-                                String tanggalMasuk = sc.next();
+        
+                                if(tanggal) {
+                                    System.out.print("\nTanggal \t: ");
+                                    String tanggalMasuk = sc.next();
+                                }
+
                                 System.out.print("Kode Barang \t: ");
                                 String kodeBaru = sc.next();
-
                                 boolean kodeAda = false;
+
                                 for (int j = 0; j < barang.length; j++) {
                                     if (barang[j][0] != null && barang[j][0].equals(kodeBaru)) {
                                         kodeAda = true;
+                                        tanggal = false;
                                         break;
                                     }
                                 }
 
                                 if (kodeAda) {
                                     System.out.println("Kode barang sudah ada. Mohon input kode yang berbeda.");
+                                    System.out.println();
                                     continue;
                                 }
 
