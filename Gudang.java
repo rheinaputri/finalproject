@@ -40,23 +40,21 @@ public class Gudang {
             username = sc.nextLine();
             System.out.print("Password : ");
             password = sc.nextLine();
+            boolean isManager = false;
 
             while (true) {
                 if (username.equalsIgnoreCase("manager") && password.equalsIgnoreCase("manager")) {
                     System.out.println("========================= Manager =========================");
-                    printMenu();
-                    System.out.println("9. Update Data Barang");
-                    System.out.println("===========================================================");
+                    isManager = true;
 
                 } else if (username.equalsIgnoreCase("karyawan") && password.equalsIgnoreCase("karyawan")) {
-                    System.out.println("========================= Karyawan =========================");
-                    printMenu();
-                    System.out.println("===========================================================");
-
+                    System.out.println("========================= Karyawan ========================");
+                    
                 } else {
                     System.out.println("\nusername atau password tidak sesuai");
                     break;
                 }
+                  printMenu(isManager);
                 
                 System.out.print("Pilih menu \t: ");
                 menu = sc.nextInt();
@@ -304,7 +302,7 @@ public class Gudang {
                     }
 
                 } else if (menu == 9) { //Update barang
-                    if (username.equalsIgnoreCase("manager") && password.equalsIgnoreCase("manager" )) {
+                    if (isManager) {
                         System.out.println("==================== UPDATE DATA BARANG ===================");
                         boolean inputLagi = true;
 
@@ -396,7 +394,7 @@ public class Gudang {
         System.out.println("===========================================================");
     }
     
-    static void printMenu() {
+    static void printMenu(boolean isManager) {
         System.out.println("1. Data Barang");
         System.out.println("2. Input Barang Baru");
         System.out.println("3. Input Barang Masuk");
@@ -405,6 +403,10 @@ public class Gudang {
         System.out.println("6. Rekap Barang Rusak");
         System.out.println("7. Rekap Barang Banyak Terjual");
         System.out.println("8. Rekap Barang Habis");
+        if (isManager) {
+            System.out.println("9. Update Data Barang");
+        }
+        System.out.println("===========================================================");
     }
 
     static void inputBarang(int menu, String[][] barang, int[][] jumlah, int[][] terjual) {
